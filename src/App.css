@@ -1,0 +1,11 @@
+.App{
+  position: relative;
+}
+#main{
+   width: 100%;
+   float: left;
+   position: fixed;
+   /* border: solid 2px black; */
+}
+
+

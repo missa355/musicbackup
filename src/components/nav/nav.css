@@ -1,0 +1,18 @@
+.nav{
+    position: absolute;
+    margin-left: 87%;
+}
+.Link{
+    color: black;
+    text-decoration: none !important;
+    padding: 8px 15px 0px 17px;
+    font-size: 22px;
+    margin-top: 20px;
+    cursor: pointer;
+    float: left;
+    opacity: 1;
+    
+}
+.Link:hover{
+    color: rgba(0,0,0, 0.5) !important;
+}

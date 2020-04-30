@@ -1,0 +1,11 @@
+.backward{
+    width: 60px;
+    height: 50px;
+    position: absolute;
+    margin-top: 25.5%;
+    left: 46.7%;
+    /* border: solid 2px black; */
+  }
+  .backward:hover{
+      cursor: pointer;
+  }

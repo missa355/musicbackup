@@ -1,0 +1,16 @@
+.record{
+    left: 6.5%;
+    height: 300px;
+    width: 22%;
+    top: 300px;
+    position: absolute;
+}
+#playlist{
+    text-align: center;
+    padding-top: 10%;
+    font-size: 60px;
+    padding-bottom: 30px;
+}
+.navbar{
+    float: left;
+}
