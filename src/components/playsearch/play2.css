@@ -9,12 +9,18 @@
     left: 54.5%;
     /* border: solid 2px black; */
 }
+
+.main_block_search{
+  /* border: black 2px solid; */
+  width: 100%;
+  height: 100000px;
+  background-image: url("../../Photos/searchback.png");
+}
   #audio1 {
-      /* display: none; */
+      display: none;
   }
   #vinyl{
-      margin: 20% 10px 0px 81%;
-      position: absolute;
+      margin: 15% 10px 0px 85%;
       animation: rotate 3s linear infinite;
       animation-play-state: paused;
       
@@ -111,8 +117,10 @@
 
 }
 .record{
-  top: 0;
   float: left;
+  top: 20px;
+  float: left;
+  left: 200px;
 }
 #bigplay{
   width: 116px;

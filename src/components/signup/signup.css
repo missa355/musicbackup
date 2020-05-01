@@ -2,8 +2,8 @@
     float: left;
     height: 30%;
     width: 33%;
-    background-color: rgba(226, 231, 245, 0.61);
-    margin: 10% 0 0 33%;
+    background-color: rgba(226, 231, 245, 1);
+    margin: 5% 0 0 33%;
     padding: 40px;
     border-radius: 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
@@ -12,3 +12,7 @@
 hr{
     background-color: black;
 }
+body {
+    background-image: linear-gradient(90deg, #8b9e88 33.33%, #F6F0CF 33.33%, #F6F0CF 50%, #8b9e88 50%, #8b9e88 83.33%, #F6F0CF 83.33%, #F6F0CF 100%);
+    background-size: 120.00px 120.00px;
+  }

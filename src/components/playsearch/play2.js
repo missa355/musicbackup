@@ -14,6 +14,8 @@ import Record from "../../components/record"
 import next from "../../Photos/forward.png"
 import back from "../../Photos/backward.png"
 import axios from "axios"
+import Navbar from "../side_burger"
+
 
 
 import "./play2.css"
@@ -201,48 +203,53 @@ export class play2 extends Component {
     render() {
         return (
             <div>
-                <img src={searchback} alt="back" id="main"/>
-                <img src={vinyl} alt="VinylS" id="vinyl"/>
-                {/* <img src={speaker} alt="speaker" id="speaker"/> */}
+                <div className="main_block_search">
+                    <Navbar></Navbar>
 
-                {/* <Nav id="nav"></Nav> */}
+                    
+                    {/* <img src={searchback} alt="back" id="main"/> */}
+                    <img src={vinyl} alt="VinylS" id="vinyl"/>
+                    {/* <img src={speaker} alt="speaker" id="speaker"/>
 
-                <div onClick={() => this.play(this.state.song_lst[index])} className="play"/>
-                <div className="record">
-                    {this.state.song_names.map((block, i) => 
-                        <Record key={i} onClick={() => this.play(i, false)} name={block}/>
-                    )}
-                    {/* <Record onClick={() => this.play(0, false)} name={this.state.song_names[0]}/>
-                    <Record onClick={() => this.play(1, false)} name={this.state.song_names[1]}/>
-                    <Record onClick={() => this.play(2, false)} name={this.state.song_names[2]}/>
-                    <Record onClick={() => this.play(3, false)} name={this.state.song_names[3]}/> */}
-                    <input onChange={this.onChangeHandler} type="file" name="myfile" id="myfile" accept="audio/*"/>
-                    <button onClick={this.upload}>submit</button>
+                    {/* <Nav id="nav"></Nav> */}
+
+                    {/* <div onClick={() => this.play(this.state.song_lst[index])} className="play"/> */}
+                    <div className="record">
+                        {this.state.song_names.map((block, i) => 
+                            <Record key={i} onClick={() => this.play(i, false)} name={block}/>
+                        )}
+                        {/* <Record onClick={() => this.play(0, false)} name={this.state.song_names[0]}/>
+                        <Record onClick={() => this.play(1, false)} name={this.state.song_names[1]}/>
+                        <Record onClick={() => this.play(2, false)} name={this.state.song_names[2]}/>
+                        <Record onClick={() => this.play(3, false)} name={this.state.song_names[3]}/> */}
+                        <input onChange={this.onChangeHandler} type="file" name="myfile" id="myfile" accept="audio/*"/>
+                        <button onClick={this.upload}>submit</button>
 
 
 
-                </div>
+                    </div>
 
 
-                
-                <audio src="http://localhost:5000/download" id="audio1" controls />
-                <Forward onClick={this.forward}/>
-                <Backward onClick={this.backward}/>
-                <h3 id="title1">♥ Why not pick a song OWO ♥ </h3>
+                    
+                    <audio src="http://localhost:5000/download" id="audio1" controls />
+                    <Forward onClick={this.forward}/>
+                    <Backward onClick={this.backward}/>
+                    <h3 id="title1">♥ Why not pick a song OWO ♥ </h3>
 
-                <div className="contain_slider1">
-                    <input className="slider1" id="myRange1" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
-                </div>
-                <div className="progress_bar">
-                    <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input>
-                </div>
+                    <div className="contain_slider1">
+                        <input className="slider1" id="myRange1" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
+                    </div>
+                    <div className="progress_bar">
+                        <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input>
+                    </div>
 
-                <div className="bottom_player">
-                    <img  onClick={() => this.backward()} id="bigback" src={back} alt="back"/>
-                    <img onClick={() => this.play(index, true)} id="bigplay" src={bigplay} alt="back"/>
-                    <img onClick={() => this.forward()} id="bignext" src={next} alt="back"/>
-                    <h3 id="title2">Choose a song OWO</h3>
+                    <div className="bottom_player">
+                        <img  onClick={() => this.backward()} id="bigback" src={back} alt="back"/>
+                        <img onClick={() => this.play(0, true)} id="bigplay" src={bigplay} alt="back"/>
+                        <img onClick={() => this.forward()} id="bignext" src={next} alt="back"/>
+                        <h3 id="title2">Choose a song OWO</h3>
 
+                    </div>
                 </div>
 
             </div>

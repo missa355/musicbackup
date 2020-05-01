@@ -6,6 +6,7 @@ import {Link} from "react-router-dom"
 import {getFromStorage, setInStorage} from "../../utils/storage"
 import { Redirect } from 'react-router-dom'
 import Nav from "../nav2/nav2"
+import Burger from "../side_burger"
 
 
 
@@ -30,7 +31,8 @@ export class signup extends Component {
         // return <Redirect to='/target' />
         return (
             <div>
-                <Nav></Nav>
+                {/* <Nav></Nav> */}
+                <Burger></Burger>
                 <div className="signup">
                 <h1>Signup</h1>
                 {/* <p>____________________________________________________________</p> */}
