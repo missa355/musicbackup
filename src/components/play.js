@@ -10,6 +10,7 @@ import back from '../Photos/background.png';
 import back2 from "../Photos/back2.png"
 import speaker from "../Photos/speaker.png"
 import Nav from "../components/nav/nav"
+import Burger from "../components/side_burger"
 import "./play.css"
 
 var audio = document.getElementById("audio")
@@ -40,7 +41,7 @@ export class play extends Component {
     play = (song) =>{
         // audio = document.getElementById("audio")
         audio.volume = this.state.volume 
-        var vin = document.getElementById("vinyl")
+        var vin = document.getElementById("vinyl1")
         var title = document.getElementById("title")
         title.innerText = this.state.song_names[index]
         if(is_on){
@@ -101,13 +102,13 @@ export class play extends Component {
     render() {
         return (
             <div>
+
                 <img src={back} alt="back" id="main"/>
-                <img src={vinyl} alt="VinylS" id="vinyl"/>
+                <img src={vinyl} alt="VinylS" id="vinyl1"/>
                 <img src={speaker} alt="speaker" id="speaker"/>
 
-                <Nav id="nav"></Nav>
                 <div className="Search_butt">
-
+                    <Burger></Burger>
                 </div>
 
                 <div onClick={() => this.play(this.state.song_lst[index])} className="play"/>
@@ -115,7 +116,7 @@ export class play extends Component {
                 <audio src="" id="audio" controls />
                 <Forward onClick={this.forward}/>
                 <Backward onClick={this.backward}/>
-                <h3 id="title"></h3>
+                <h3 id="title">Pick a song</h3>
 
                 <div className="contain_slider">
                     <input className="slider" id="myRange" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>

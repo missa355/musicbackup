@@ -8,15 +8,16 @@ body{
 .play{
     width: 75px;
     height: 80px;
-    position: absolute;
-    margin-top: 24.6%;
+    /* position: absolute; */
+    top: 35%;
+    /* margin-top: 24.6%; */
     left: 54.5%;
     /* border: solid 2px black; */
 }
   #audio {
       display: none;
   }
-  #vinyl{
+  #vinyl1{
       margin: 20% 10px 0px 79%;
       position: fixed;
       animation: rotate 3s linear infinite;
@@ -25,7 +26,7 @@ body{
       
   }
   #speaker{
-    margin: 32.2% 10px 0px 45%;
+    margin: 30.2% 10px 0px 45%;
     position: absolute;
     width: 24px;
     height: 24px;
@@ -66,7 +67,7 @@ body{
   }
   .contain_slider{
     width: 50%;
-    margin-top: 32.5%;
+    margin-top: 30%;
     margin-left: 47%;
     position: absolute;
     
