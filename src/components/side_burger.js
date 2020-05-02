@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import {Link} from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
@@ -8,9 +9,21 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import CreateIcon from '@material-ui/icons/Create';
+import HomeIcon from '@material-ui/icons/Home';
+import SearchIcon from '@material-ui/icons/Search';
+import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import LiveHelpIcon from '@material-ui/icons/LiveHelp';
+import SettingsIcon from '@material-ui/icons/Settings';
+import ContactMailIcon from '@material-ui/icons/ContactMail';
+import PublishIcon from '@material-ui/icons/Publish';
+import ShowChartIcon from '@material-ui/icons/ShowChart';
+
+const Account_logos = [<LockOpenIcon/>,<CreateIcon/>]
+const General_logos = [<HomeIcon/>, <SearchIcon/>, <PlaylistPlayIcon/>, <LiveHelpIcon/>, <SettingsIcon/>, <ContactMailIcon/>]
+const creators_logos = [<PublishIcon/>, <ShowChartIcon/>, <ContactMailIcon/>]
 
 const useStyles = makeStyles({
   list: {
@@ -48,18 +61,32 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Home','Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+        <ListItem><h3>Account</h3></ListItem>
+        {['Sing in','Create account'].map((text, index) => (
+          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to = "/signup"><ListItem button key={text}>
+            <ListItemIcon>{Account_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />
-          </ListItem>
+          </ListItem></Link>
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        <ListItem><h3>General</h3></ListItem>
+
+        {['Home', 'Search', 'Playlists', 'FAQ', 'Settings', 'Support'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{General_logos[index]}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+
+      <List>
+        <ListItem><h3>For Creators</h3></ListItem>
+
+        {['Upload', 'Promote', 'Contact'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{creators_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
