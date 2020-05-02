@@ -12,7 +12,7 @@
 hr{
     background-color: black;
 }
-/* body {
-    background-image: linear-gradient(90deg, #8b9e88 33.33%, #F6F0CF 33.33%, #F6F0CF 50%, #8b9e88 50%, #8b9e88 83.33%, #F6F0CF 83.33%, #F6F0CF 100%);
-    background-size: 120.00px 120.00px;
-  } */
+body {
+    background-image: linear-gradient(126deg, #343d32 33.33%, #8c897a 33.33%, #8c897a 50%, #343d32 50%, #343d32 83.33%, #8c897a 83.33%, #8c897a 100%);
+    background-size: 74.16px 102.08px;
+  }

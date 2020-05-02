@@ -5,7 +5,7 @@ import "./login.css"
 import axios from "axios"
 import {getFromStorage, setInStorage} from "../../utils/storage"
 import { Redirect } from 'react-router-dom'
-import Nav from "../nav2/nav2"
+import Nav from "../side_burger"
 
 
 export class login extends Component {

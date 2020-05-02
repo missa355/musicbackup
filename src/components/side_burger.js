@@ -24,6 +24,9 @@ import ShowChartIcon from '@material-ui/icons/ShowChart';
 const Account_logos = [<LockOpenIcon/>,<CreateIcon/>]
 const General_logos = [<HomeIcon/>, <SearchIcon/>, <PlaylistPlayIcon/>, <LiveHelpIcon/>, <SettingsIcon/>, <ContactMailIcon/>]
 const creators_logos = [<PublishIcon/>, <ShowChartIcon/>, <ContactMailIcon/>]
+const path_lst_1 = ["/login", "/signup"]
+const path_lst_2 = ["/", "/Search", "/", "/", "/", "/"]
+const path_lst_3 = ["/", "/", "/"]
 
 const useStyles = makeStyles({
   list: {
@@ -63,7 +66,7 @@ export default function SwipeableTemporaryDrawer() {
       <List>
         <ListItem><h3>Account</h3></ListItem>
         {['Sing in','Create account'].map((text, index) => (
-          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to = "/signup"><ListItem button key={text}>
+          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_1[index]}><ListItem button key={text}>
             <ListItemIcon>{Account_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem></Link>
@@ -74,10 +77,10 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem><h3>General</h3></ListItem>
 
         {['Home', 'Search', 'Playlists', 'FAQ', 'Settings', 'Support'].map((text, index) => (
-          <ListItem button key={text}>
+          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_2[index]}><ListItem button key={text}>
             <ListItemIcon>{General_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />
-          </ListItem>
+          </ListItem></Link>
         ))}
       </List>
 
@@ -85,10 +88,10 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem><h3>For Creators</h3></ListItem>
 
         {['Upload', 'Promote', 'Contact'].map((text, index) => (
-          <ListItem button key={text}>
+           <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_3[index]}><ListItem button key={text}>
             <ListItemIcon>{creators_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />
-          </ListItem>
+          </ListItem></Link>
         ))}
       </List>
     </div>
