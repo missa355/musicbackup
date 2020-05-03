@@ -13,12 +13,21 @@
 .main_block_search{
   /* border: black 2px solid; */
   width: 60%;
-  height: 1000px;
+  height: 95vh;
   background-color: rgb(255, 255, 255);
   margin: auto;
   border-radius: 1%;
 
   /* background-image: url("../../Photos/searchback.png"); */
+}
+#infobox{
+  float: left;
+  height: 35vh;
+  background-color: #212121;
+  width: 100%;
+  margin-bottom: 7vh;
+  border-radius: 1%;
+
 }
   #audio1 {
       display: none;

@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import track2 from "../music/track2.mp3"
 import Bottom from "../components/bottom_player/bottom_player"
 import "./record.css"
-import playbutt from "../Photos/small_play.png"
+import playbutt from "../Photos/turntable.png"
 import { PropTypes } from 'prop-types'
 
 export class record extends Component {
@@ -123,10 +123,11 @@ export class record extends Component {
     
     render() {
         return (
-            <div className="elem">
-                <img src={playbutt} onClick={this.onclick}/> <Typography variant="h5">{this.props.name}</Typography>
-                
-            </div>
+                <div className="elem">
+                    <img src={playbutt} onClick={this.onclick}/> 
+                    <p>{this.props.name}</p>
+                    
+                </div>
         )
     }
 }

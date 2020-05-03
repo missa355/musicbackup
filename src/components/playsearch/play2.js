@@ -209,7 +209,7 @@ export class play2 extends Component {
 
             
                     {/* <img src={vinyl} alt="VinylS" id="vinyl"/> */}
- 
+                    <div id="infobox"></div>
                         {this.state.song_names.map((block, i) => 
                             <Record key={i} onClick={() => this.play(i, false)} name={block}/>
                         )}
