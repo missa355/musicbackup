@@ -15,6 +15,7 @@ import next from "../../Photos/forward.png"
 import back from "../../Photos/backward.png"
 import axios from "axios"
 import Navbar from "../side_burger"
+import cover from "../../Photos/DAMN.png"
 
 
 
@@ -202,15 +203,19 @@ export class play2 extends Component {
       
     render() {
         return (
-            <div>
+            <div id="search_div">
                 <Navbar></Navbar>
 
                 <div className="main_block_search">
 
             
                     {/* <img src={vinyl} alt="VinylS" id="vinyl"/> */}
-                    <div id="infobox"></div>
-                        {this.state.song_names.map((block, i) => 
+                    <div id="infobox">
+                        <img alt="damn" src={cover}/>
+                        <h2>DAMN</h2>
+                        <p>Studio album by Kendrick Lamar</p>
+                    </div>
+                    {this.state.song_names.map((block, i) => 
                             <Record key={i} onClick={() => this.play(i, false)} name={block}/>
                         )}
                         {/* <input onChange={this.onChangeHandler} type="file" name="myfile" id="myfile" accept="audio/*"/>

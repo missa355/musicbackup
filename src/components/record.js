@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import track2 from "../music/track2.mp3"
 import Bottom from "../components/bottom_player/bottom_player"
 import "./record.css"
-import playbutt from "../Photos/turntable.png"
+import playbutt from "../Photos/music.png"
 import { PropTypes } from 'prop-types'
 
 export class record extends Component {

@@ -43,7 +43,7 @@ export class login extends Component {
             return(<div><Redirect to="/search" /></div>)
         }
         return (
-            <div>
+            <div id="login_div">
                 <Nav></Nav>
                 <div className="Login">
                 <h1>Login in</h1>
