@@ -12,7 +12,7 @@
 
 .main_block_search{
   /* border: black 2px solid; */
-  width: 60%;
+  width: 85%;
   height: 95vh;
   background-color: #ffffff;
   margin: auto;
@@ -26,7 +26,8 @@
   height: 100vh;
   background: #3E5151;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #DECBA4, #3E5151);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #DECBA4, #3E5151); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to left, #DECBA4, #3E5151); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
   
 }
 #infobox{
@@ -46,11 +47,11 @@
 }
 #infobox h2{
   color: white;
-  font-size: 40px;
-  margin: 4vh 5vh 0 5vh;
+  font-size: 100px;
+  margin: 13vh 5vh 0 5vh;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
-  
+
 }
 #infobox p{
   color: white;
