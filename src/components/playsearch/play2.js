@@ -16,6 +16,9 @@ import back from "../../Photos/backward.png"
 import axios from "axios"
 import Navbar from "../side_burger"
 import cover from "../../Photos/DAMN.png"
+import Slider from '@material-ui/core/Slider';
+import VolumeDown from '@material-ui/icons/VolumeDown';
+
 
 
 
@@ -29,7 +32,7 @@ var index = 0
 export class play2 extends Component {
     state = {
         song_lst : [track1, track2, track3 ,track4],
-        song_names : ["Dudley's Theme - Street Fighter III: Third Strike", "Gaullin - Moonlight", "Wu-Tang Clan - Method Man", "TMG - Walk Man", "Outset Island - The Legend of Zelda: The Wind Waker HD"],
+        song_names : ["BLOOD. ♪", "DNA. ♪", "YUH. ♪", "ELEMENT. ♪", "HUMBLE. ♪", "PRIDE. ♪"],
         volume: 0.3,
         progress: 0,
         duration: 60, //this is in seconds
@@ -206,7 +209,7 @@ export class play2 extends Component {
             <div id="search_div">
                 <Navbar></Navbar>
 
-                <div className="main_block_search">
+                <div className="main_block_search" style={{height:`${44 + 8.2*this.state.song_names.length}vh`}}>
 
             
                     {/* <img src={vinyl} alt="VinylS" id="vinyl"/> */}
@@ -216,7 +219,7 @@ export class play2 extends Component {
                         <p>Studio album by Kendrick Lamar</p>
                     </div>
                     {this.state.song_names.map((block, i) => 
-                            <Record key={i} onClick={() => this.play(i, false)} name={block}/>
+                            <Record className="tracks" key={i} onClick={() => this.play(i, false)} name={block}/>
                         )}
                         {/* <input onChange={this.onChangeHandler} type="file" name="myfile" id="myfile" accept="audio/*"/>
                         <button onClick={this.upload}>submit</button> */}
@@ -226,26 +229,41 @@ export class play2 extends Component {
 
 
                     
-                    {/* <audio src="http://localhost:5000/download" id="audio1" controls />
-                    <Forward onClick={this.forward}/>
-                    <Backward onClick={this.backward}/>
-                    <h3 id="title1">♥ Why not pick a song OWO ♥ </h3>
+                    {/* <audio src="http://localhost:5000/download" id="audio1" controls /> */}
+                    {/* <Forward onClick={this.forward}/>
+                    <Backward onClick={this.backward}/> */}
+                    {/* <h3 id="title1">♥ Why not pick a song OWO ♥ </h3> */}
 
-                    <div className="contain_slider1">
+                    {/* <div className="contain_slider1">
                         <input className="slider1" id="myRange1" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
                     </div>
                     <div className="progress_bar">
                         <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input>
-                    </div>
+                    </div> */}
 
-                    <div className="bottom_player">
+                    {/* <div className="breaker"></div> */}
+                </div>
+                <div className="bottom_player">
+                        <img id ="small_cover" src={cover}/>
+
                         <img  onClick={() => this.backward()} id="bigback" src={back} alt="back"/>
                         <img onClick={() => this.play(0, true)} id="bigplay" src={bigplay} alt="back"/>
                         <img onClick={() => this.forward()} id="bignext" src={next} alt="back"/>
-                        <h3 id="title2">Choose a song OWO</h3>
+                        <h3 id="title2">DNA.</h3>
+                        <p id="artist">Kendrick Lamar</p>
+                        <div className="progress_bar">
+                            <p id="current_timer">0:00</p><Slider style={{width:'70vh', color:'white', position:'fixed'}}  aria-labelledby="disabled-slider"/>
 
-                    </div> */}
-                </div>
+                            {/* <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input> */}
+                        </div>
+                        <div className="contain_slider1">
+                        <VolumeDown id='volume'/> <Slider style={{width:'20vh', color:'white', position:'fixed'}}  aria-labelledby="disabled-slider" />
+
+                            {/* <input className="slider1" id="myRange1" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input> */}
+                        </div>
+
+
+                    </div>
 
             </div>
         )

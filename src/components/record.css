@@ -3,7 +3,7 @@
     float: left;
     font-size: 17px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    height: 9%;
+    height: 8vh;
     background-color: #ffffff;
     margin-left: 3%;   
     border-radius: 5px;
@@ -12,6 +12,7 @@
 }
 .elem :hover{
     background-color: rgba(218, 212, 196, 0.25);
+    cursor: pointer;
 }
 .elem img{
     float: left;
