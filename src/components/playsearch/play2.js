@@ -29,6 +29,7 @@ import "./play2.css"
 var audio = document.getElementById("audio1")
 var is_on = false
 var index = 0
+var curr_volume = 0.3
 
 // var volume = 0.1
 export class play2 extends Component {
@@ -235,7 +236,8 @@ export class play2 extends Component {
 
             audio.src = this.state.song_lst[index]
             // audio.src = this.state.song_lst[index]
-            audio.volume = this.state.volume 
+            // audio.volume = this.state.volume 
+            audio.volume = curr_volume
             audio.play()
             document.getElementById("bigplay").src=pause;
 
@@ -248,7 +250,9 @@ export class play2 extends Component {
             return ;
 
         }
-        audio.volume = this.state.volume 
+        // audio.volume = this.state.volume 
+        audio.volume = curr_volume
+
 
 
         // is_on = true;
@@ -278,7 +282,7 @@ export class play2 extends Component {
         index = (index + 1) % 4
         // this.setState({index: index % 3})
         audio.src = this.state.song_lst[index]
-        this.play(index)
+        this.play(index, true)
         // audio.play()
 
 
@@ -292,16 +296,18 @@ export class play2 extends Component {
             index = 2
         }
         audio.src = this.state.song_lst[index]
-        this.play(this.state.song_lst[index])
+        this.play(index, true)
 
     
         
     }
 
     SetVolume = (val) => {
-        this.setState({
-              volume: val/ 100
-            })
+        // this.setState({
+        //       volume: val/100
+        //     })
+        console.log(val)
+
         audio.volume = val/100
     }
     SetProgress = (val) => {
@@ -354,8 +360,8 @@ export class play2 extends Component {
         seconds = Math.floor(seconds % 60);
         seconds = (seconds >= 10) ? seconds : "0" + seconds;
         timer.innerHTML =  minutes + ":" + seconds
-        // var prog = document.getElementById("time_bar")
-        // prog.value = 
+        var prog = document.getElementById("myRange1")
+        prog.value = audio.currentTime/audio.duration * 100
     }
 
 
@@ -412,8 +418,8 @@ export class play2 extends Component {
                         <p id="artist">Kendrick Lamar</p>
                         <div className="progress_bar">
                             <p id="current_timer">0:00</p>
-                            <div class="slidecontainer">
-                                <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
+                            <div className="slidecontainer">
+                                <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1"/>
                             </div>
                             {/* <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input> */}
                         </div>
