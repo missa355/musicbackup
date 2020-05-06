@@ -114,18 +114,18 @@
 
 
 .bottom_player{
-  width: 100%;
-  height:8.5%;
+  width:100%;
   background: #3C3B3F;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #605C3C, #3C3B3F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-top: 1px rgb(47, 47, 51);
   position: fixed;
-  left: 0;
-  bottom: 0;
-  
+  bottom: 0px;
+  /* border: 2px rgb(187, 29, 29) solid; */
 
 }
+
+
 .record{
   background-color: blue;
 }
@@ -221,7 +221,7 @@
 }
 .progress_bar{
   left: 80vh;
-  width:90vh;
+  width:60%;
   position: fixed;
   /* left: 175vh; */
   bottom: 2.5vh;
@@ -230,22 +230,23 @@
   float: left;
 }
 #volume_bar{
-  width:20vh;
+  width:10%;
   color:white; 
   position:fixed;
-  float: left;
 }
 #volume{
   color: white;
-  margin-right: 2vh;
+  margin-right: 3%;
 }
 .contain_slider1{
-  width:40vh;
+  width:14%;
   position: fixed;
-  left: 175vh;
+  left: 80%;
   bottom: 2.5vh;
   /* background-color: black; */
   height: 3vh;
+  /* border: black 1px solid; */
+
 }
 /* .contain_slider_land{
 
@@ -253,11 +254,11 @@
 /* webkit slider=========================== */
 
 .slidecontainer {
-  width:65vh;
-  position: fixed;
+  /* border: black 1px solid; */
+  width: 50%;
   float: left;
-  bottom: 3.05vh;
-  left: 85vh
+  left: 80%;
+  /* background-color: black; */
 }
 
 .slider1 {
@@ -273,6 +274,7 @@
 
 .slider1:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .slider1::-webkit-slider-thumb {
@@ -296,3 +298,7 @@
 
 
 /* ============================= */
+#myRange1{
+  /* width:65vh; */
+
+}

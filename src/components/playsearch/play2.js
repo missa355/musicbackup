@@ -310,12 +310,9 @@ export class play2 extends Component {
 
         audio.volume = val/100
     }
-    SetProgress = (val) => {
-        console.log(val, (val/100) * (audio.duration))
-            this.setState({
-              progress: val/100// precentage
-            })
-        audio.currentTime = (val/100) * (audio.duration);
+    SetProgress = () => {
+        var prog = document.getElementById("myRange1")
+        audio.currentTime= (prog.value/100)*audio.duration;
     }
     upload = (e) =>{
         console.log("submit works")
@@ -419,7 +416,7 @@ export class play2 extends Component {
                         <div className="progress_bar">
                             <p id="current_timer">0:00</p>
                             <div className="slidecontainer">
-                                <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1"/>
+                                <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
                             </div>
                             {/* <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input> */}
                         </div>
