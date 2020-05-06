@@ -43,12 +43,12 @@ export class signup extends Component {
                     <Row form>
                         <Col md={6}>
                             <FormGroup>
-                                <Input type="text" name="fname" id="fname" required placeholder="First name..." />
+                                <Input className="input_block" type="text" name="fname" id="fname" required placeholder="First name..." />
                             </FormGroup>
                         </Col>
                         <Col md={6}>
                             <FormGroup>
-                                <Input type="text" name="lname" id="lname" required placeholder="Last name..." />
+                                <Input className="input_block" type="text" name="lname" id="lname" required placeholder="Last name..." />
                             </FormGroup>
                         </Col>
                     </Row>
@@ -56,7 +56,7 @@ export class signup extends Component {
                     <Row form>
                         <Col md={12}>
                         <FormGroup>
-                            <Input type="email" name="email" id="Email" required placeholder="Enter your Email..." />
+                            <Input type="email" className="input_block" name="email" id="Email" required placeholder="Enter your Email..." />
                         </FormGroup>
                         </Col>
                     </Row>
@@ -65,12 +65,12 @@ export class signup extends Component {
                     <Row form>
                         <Col md={12}>
                         <FormGroup>
-                            <Input type="password" name="email" id="password" required placeholder="Enter your Password..." />
+                            <Input type="password" className="input_block" name="email" id="password" required placeholder="Enter your Password..." />
                         </FormGroup>
                         </Col>
                     </Row>
                     <br/>
-                    <Button onClick={this.click} type="submit" color="primary" size="lg" block>Sign up</Button>
+                    <Button onClick={this.click} className="input_block" type="submit"  size="lg" block>Sign up</Button>
 
                 </Form>
 

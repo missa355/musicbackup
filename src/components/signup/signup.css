@@ -1,14 +1,25 @@
 .signup{
+    color: white;
     float: left;
     height: 30%;
     width: 33%;
-    background-color: rgba(226, 231, 245, 1);
+    background-color: rgba(226, 231, 245, 0);
     margin: 5% 0 0 33%;
     padding: 40px;
     border-radius: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19); */
     /* border: black 2px solid; */
 }
 hr{
-    background-color: black;
+    background-color: rgb(255, 255, 255)
+}
+.input_block{
+    background-color: rgba(232, 240, 243, 0.048);
+    border: 1px rgb(250, 248, 248) solid;
+}
+.input_block::placeholder{
+    color: white;
+}
+.input_block:hover{
+    background-color: rgba(228, 222, 222, 0.164);
 }

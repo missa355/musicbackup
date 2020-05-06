@@ -105,7 +105,6 @@ export class play extends Component {
 
                 <img src={back} alt="back" id="main"/>
                 <img src={vinyl} alt="VinylS" id="vinyl1"/>
-                <img src={speaker} alt="speaker" id="speaker"/>
 
                 <div className="Search_butt">
                     <Burger></Burger>
@@ -118,8 +117,9 @@ export class play extends Component {
                 <Backward onClick={this.backward}/>
                 <h3 id="title">Pick a song</h3>
 
-                <div className="contain_slider">
-                    <input className="slider" id="myRange" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
+                <div className="contain_slider_land">
+                    {/* <img src={speaker} alt="speaker" id="speaker"/>  */}
+                   <input className="slider" id="myRange" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
                 </div>
 
             </div>

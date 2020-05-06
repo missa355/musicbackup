@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import track1 from "../../music/track1.mp3"
-import track2 from "../../music/track2.mp3"
-import track3 from "../../music/track3.mp3"
-import track4 from "../../music/track4.mp3"
+import track1 from "../../music/HUMBLE.mp3"
+import track2 from "../../music/DNA.mp3"
+import track3 from "../../music/FEAR.mp3"
+import track4 from "../../music/ELEMENT.mp3"
+import RangeSlider from 'react-bootstrap-range-slider';
 import Forward from "../forward"
 import Backward from "../backward"
 import vinyl from "../../Photos/vinyl.png"
 import searchback from "../../Photos/searchback.png"
 import bigplay from "../../Photos/play.png"
 import bigresume from "../../Photos/bottom_resume.png"
+import pause from "../../Photos/pause.png"
 // import Nav from "../../components/nav2/nav2"
 import Record from "../../components/record"
 import next from "../../Photos/forward.png"
@@ -32,7 +34,7 @@ var index = 0
 export class play2 extends Component {
     state = {
         song_lst : [track1, track2, track3 ,track4],
-        song_names : ["BLOOD. ♪", "DNA. ♪", "YUH. ♪", "ELEMENT. ♪", "HUMBLE. ♪", "PRIDE. ♪"],
+        song_names : ["HUMBLE - Kendrick Lamar ♪", "DNA - Kendrick Lamar ♪", "FEAR - Kendrick Lamar ♪", "ELEMENT - Kendrick Lamar ♪"],
         volume: 0.3,
         progress: 0,
         duration: 60, //this is in seconds
@@ -203,19 +205,175 @@ export class play2 extends Component {
     //       loaded: 0,
     //     })
     //   }
+
+    //=================================================================================================================
+    //testing using hard-ishcode
+    componentDidMount = () => {
+        audio = document.getElementById("audio1")
+        // audio.src = track1
+        audio.onended = () => {
+            this.forward()
+
+        }
+        var slider = document.getElementById("volume_bar")
+        slider.defaultValue = this.state.volume * 100
+        // var prog = document.getElementById("time_bar")
+        // prog.value = this.state.progress
+
+
+    }
+    play = (i, main) =>{
+        // var prog = document.getElementById("time_bar")
+        // prog.click();
+        // audio = document.getElementById("audio")
+        // audio.pause()
+        if(!main){
+            index = i
+
+            // axios.get(`http://localhost:5000/download/${this.state.song_names[index]}`)    
+            // .then(res => console.log(res))
+
+            audio.src = this.state.song_lst[index]
+            // audio.src = this.state.song_lst[index]
+            audio.volume = this.state.volume 
+            audio.play()
+            document.getElementById("bigplay").src=pause;
+
+            is_on = true;
+
+    
+            // is_on = true;
+            // audio.play()
+
+            return ;
+
+        }
+        audio.volume = this.state.volume 
+
+
+        // is_on = true;
+        // audio.play()
+        // document.body.style.backgroundImage = "url('../Photos/resume.png')";
+        if(is_on){
+            audio.pause()
+            
+            // this.setState({song_on: false})
+            is_on = false
+            document.getElementById("bigplay").src=bigplay;
+
+        }
+        else{
+            // this.setState({song_on: true})
+            is_on = true;
+            document.getElementById("bigplay").src=pause;
+            audio.play()
+
+            
+        }
+    }
+
+    forward = () => {
+        // this.setState({song_on: false})
+        is_on = false;
+        index = (index + 1) % 4
+        // this.setState({index: index % 3})
+        audio.src = this.state.song_lst[index]
+        this.play(index)
+        // audio.play()
+
+
+        
+    }
+
+    backward = () => {
+        is_on = false;
+        index = index - 1
+        if(index < 0){
+            index = 2
+        }
+        audio.src = this.state.song_lst[index]
+        this.play(this.state.song_lst[index])
+
+    
+        
+    }
+
+    SetVolume = (val) => {
+        this.setState({
+              volume: val/ 100
+            })
+        audio.volume = val/100
+    }
+    SetProgress = (val) => {
+        console.log(val, (val/100) * (audio.duration))
+            this.setState({
+              progress: val/100// precentage
+            })
+        audio.currentTime = (val/100) * (audio.duration);
+    }
+    upload = (e) =>{
+        console.log("submit works")
+        // console.log(this.state)
+        var myfile = document.getElementById("myfile").files[0];
+        // var res = myfile.name.split(".")[0];
+        // console.log(res)
+        console.log(myfile)
+        const data = new FormData()
+        data.append('myfile', myfile)
+        var contenttype = {
+            headers : {
+                "content-type" : "multipart/form-data"
+            }
+        }
+        // upload audio file to server
+        console.log(data)
+        axios.post("http://localhost:5000/upload", data, contenttype)    
+        .then(res => console.log(res))
+        
+        // uploads name of the file which consequnly uploads the directry to the mongodb collection
+        const track_info = {name:myfile.name.toLowerCase().split(" ").join("")}
+        axios.post("http://localhost:5000/track/add", track_info)    
+        .then(res => console.log(res))
+        
+    }
+    onChangeHandler= (event) =>{
+        console.log(event.target.files[0])
+        console.log(document.getElementById("myfile").files[0])
+
+        this.setState({
+          selectedFile: event.target.files[0],
+          loaded: 0,
+        })
+      }
+
+    updatetimer = () => {
+        var timer = document.getElementById("current_timer")
+        var seconds = audio.currentTime
+        var minutes = Math.floor(seconds / 60);
+        minutes = (minutes >= 10) ? minutes : minutes;
+        seconds = Math.floor(seconds % 60);
+        seconds = (seconds >= 10) ? seconds : "0" + seconds;
+        timer.innerHTML =  minutes + ":" + seconds
+        // var prog = document.getElementById("time_bar")
+        // prog.value = 
+    }
+
+
+
+    //=================================================================================================================
       
     render() {
         return (
             <div id="search_div">
                 <Navbar></Navbar>
 
-                <div className="main_block_search" style={{height:`${44 + 8.2*this.state.song_names.length}vh`}}>
+                <div className="main_block_search" style={{height:`${44 + 8.5*this.state.song_names.length}vh`}}>
 
             
                     {/* <img src={vinyl} alt="VinylS" id="vinyl"/> */}
                     <div id="infobox">
                         <img alt="damn" src={cover}/>
-                        <h2>DAMN</h2>
+                        <h2>DAMN.</h2>
                         <p>Studio album by Kendrick Lamar</p>
                     </div>
                     {this.state.song_names.map((block, i) => 
@@ -228,7 +386,8 @@ export class play2 extends Component {
 
 
 
-                    
+                    <audio src={this.state.song_lst[index]} id="audio1" controls onTimeUpdate={this.updatetimer} />
+
                     {/* <audio src="http://localhost:5000/download" id="audio1" controls /> */}
                     {/* <Forward onClick={this.forward}/>
                     <Backward onClick={this.backward}/> */}
@@ -252,12 +411,14 @@ export class play2 extends Component {
                         <h3 id="title2">DNA.</h3>
                         <p id="artist">Kendrick Lamar</p>
                         <div className="progress_bar">
-                            <p id="current_timer">0:00</p><Slider style={{width:'70vh', color:'white', position:'fixed'}}  aria-labelledby="disabled-slider"/>
-
+                            <p id="current_timer">0:00</p>
+                            <div class="slidecontainer">
+                                <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
+                            </div>
                             {/* <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input> */}
                         </div>
                         <div className="contain_slider1">
-                        <VolumeDown id='volume'/> <Slider style={{width:'20vh', color:'white', position:'fixed'}}  aria-labelledby="disabled-slider" />
+                            <VolumeDown id='volume'/> <Slider defaultValue={30} id="volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
 
                             {/* <input className="slider1" id="myRange1" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input> */}
                         </div>

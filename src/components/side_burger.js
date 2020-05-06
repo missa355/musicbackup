@@ -66,7 +66,7 @@ export default function SwipeableTemporaryDrawer() {
       <List>
         <ListItem><h3>Account</h3></ListItem>
         {['Sing in','Create account'].map((text, index) => (
-          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_1[index]}><ListItem button key={text}>
+          <Link key={index} style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_1[index]}><ListItem button key={text}>
             <ListItemIcon>{Account_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem></Link>
@@ -77,7 +77,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem><h3>General</h3></ListItem>
 
         {['Home', 'Search', 'Playlists', 'FAQ', 'Settings', 'Support'].map((text, index) => (
-          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_2[index]}><ListItem button key={text}>
+          <Link key={index} style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_2[index]}><ListItem button key={text}>
             <ListItemIcon>{General_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem></Link>
@@ -88,7 +88,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem><h3>For Creators</h3></ListItem>
 
         {['Upload', 'Promote', 'Contact'].map((text, index) => (
-           <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_3[index]}><ListItem button key={text}>
+           <Link key={index} style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_3[index]}><ListItem button key={text}>
             <ListItemIcon>{creators_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem></Link>

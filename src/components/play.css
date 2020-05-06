@@ -26,11 +26,9 @@ body{
       
   }
   #speaker{
-    top: 0%;
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    /* animation: rotate 3s linear infinite;
+    float: left;
+    position: absolute;  
+      /* animation: rotate 3s linear infinite;
     animation-play-state: paused; */
 }
   #title{
@@ -60,16 +58,19 @@ body{
     }
   }
   #myRange{
-    width: 39%;
+    width: 19%;
+    float: right;
+    background-color: black;
+    float: right;
     background-color: black;
     box-shadow: 0 4px 8px 0 rgba(224, 153, 153, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.4);
-
-  }
-  .contain_slider{
-    width: 50%;
     margin-top: 30%;
     margin-left: 47%;
     position: absolute;
+
+  }
+  .contain_slider_land{
+    background-color: violet;
     
   }
   .slider {
@@ -82,6 +83,7 @@ body{
     -webkit-transition: .2s;
     transition: opacity .2s;
     float: left;
+    
     
   }
   
