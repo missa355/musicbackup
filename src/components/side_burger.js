@@ -25,8 +25,8 @@ const Account_logos = [<LockOpenIcon/>,<CreateIcon/>]
 const General_logos = [<HomeIcon/>, <SearchIcon/>, <PlaylistPlayIcon/>, <LiveHelpIcon/>, <SettingsIcon/>, <ContactMailIcon/>]
 const creators_logos = [<PublishIcon/>, <ShowChartIcon/>, <ContactMailIcon/>]
 const path_lst_1 = ["/login", "/signup"]
-const path_lst_2 = ["/", "/Search", "/", "/", "/", "/"]
-const path_lst_3 = ["/", "/", "/"]
+const path_lst_2 = ["/", "/Search", "/explore", "/", "/", "/"]
+const path_lst_3 = ["/upload", "/", "/"]
 
 const useStyles = makeStyles({
   list: {
@@ -65,7 +65,7 @@ export default function SwipeableTemporaryDrawer() {
     >
       <List>
         <ListItem><h3>Account</h3></ListItem>
-        {['Sing in','Create account'].map((text, index) => (
+        {['Sign in','Create account'].map((text, index) => (
           <Link key={index} style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_1[index]}><ListItem button key={text}>
             <ListItemIcon>{Account_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />

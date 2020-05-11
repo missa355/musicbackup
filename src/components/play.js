@@ -101,7 +101,7 @@ export class play extends Component {
 
     render() {
         return (
-            <div>
+            <div id="land_page_back">
 
                 <img src={back} alt="back" id="main"/>
                 <img src={vinyl} alt="VinylS" id="vinyl1"/>

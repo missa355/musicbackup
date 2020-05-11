@@ -1,0 +1,48 @@
+#outer{
+    float: left;
+    height: 350px;
+    width: 250px;
+    margin: 10px;
+    margin-top: 1%;
+    margin-bottom: 50px;
+    position: relative;
+    /* background: #232526; 
+    background: -webkit-linear-gradient(to right, #16181a, #232526);  
+    background: linear-gradient(to right, #121213, #232526); */
+    background-color: rgb(254, 255, 254);
+    border-radius: 4%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+#inner{
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    position: absolute;
+    left: 25px;
+    top: 30px;
+    height: 200px;
+    width: 80%;
+    /* border-radius: 4%; */
+    background-color: rgb(126, 121, 121);
+    background-image: url("../../Photos//DAMN.png");
+    background-size: cover;
+
+}
+#outer h4{
+    color: rgb(0, 0, 0);
+    position: absolute;
+    left: 22px;
+    top: 250px;
+}
+#outer p{
+    color: rgb(0, 0, 0);
+    position: absolute;
+    left: 22px;
+    top: 290px;
+    opacity: 0.70;
+}
+
+#outer:hover{
+    cursor: pointer;
+}

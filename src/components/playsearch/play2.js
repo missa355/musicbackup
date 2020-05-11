@@ -34,8 +34,8 @@ var curr_volume = 0.3
 // var volume = 0.1
 export class play2 extends Component {
     state = {
-        song_lst : [track1, track2, track3 ,track4],
-        song_names : ["HUMBLE - Kendrick Lamar ♪", "DNA - Kendrick Lamar ♪", "FEAR - Kendrick Lamar ♪", "ELEMENT - Kendrick Lamar ♪"],
+        song_lst : [],
+        song_names : [],
         volume: 0.3,
         progress: 0,
         duration: 60, //this is in seconds
@@ -210,6 +210,13 @@ export class play2 extends Component {
     //=================================================================================================================
     //testing using hard-ishcode
     componentDidMount = () => {
+        axios.get("http://localhost:5000/track")    
+        .then(res => {
+            for(var i=0;i<res.data.length;i++){
+                this.setState({song_names: [...this.state.song_names, res.data[i].Name]})
+                // console.log(this.state.song_names)
+            }
+        })  
         audio = document.getElementById("audio1")
         // audio.src = track1
         audio.onended = () => {
@@ -231,10 +238,10 @@ export class play2 extends Component {
         if(!main){
             index = i
 
-            // axios.get(`http://localhost:5000/download/${this.state.song_names[index]}`)    
-            // .then(res => console.log(res))
+            axios.get(`http://localhost:5000/download/${this.state.song_names[index]}`)    
+            .then(res => console.log(res))
 
-            audio.src = this.state.song_lst[index]
+            audio.src = `http://localhost:5000/download/${this.state.song_names[index]}`
             // audio.src = this.state.song_lst[index]
             // audio.volume = this.state.volume 
             audio.volume = curr_volume
@@ -250,6 +257,7 @@ export class play2 extends Component {
             return ;
 
         }
+
         // audio.volume = this.state.volume 
         audio.volume = curr_volume
 
@@ -277,11 +285,15 @@ export class play2 extends Component {
     }
 
     forward = () => {
+
         // this.setState({song_on: false})
         is_on = false;
-        index = (index + 1) % 4
+        index = (index + 1) % this.state.song_names.length
         // this.setState({index: index % 3})
-        audio.src = this.state.song_lst[index]
+        axios.get(`http://localhost:5000/download/${this.state.song_names[index]}`)    
+        .then(res => console.log(res))
+
+        audio.src = `http://localhost:5000/download/${this.state.song_names[index]}`       
         this.play(index, true)
         // audio.play()
 
@@ -293,9 +305,12 @@ export class play2 extends Component {
         is_on = false;
         index = index - 1
         if(index < 0){
-            index = 2
+            index = this.state.song_names.length - 1
         }
-        audio.src = this.state.song_lst[index]
+        axios.get(`http://localhost:5000/download/${this.state.song_names[index]}`)    
+        .then(res => console.log(res))
+
+        audio.src = `http://localhost:5000/download/${this.state.song_names[index]}`
         this.play(index, true)
 
     
@@ -314,40 +329,40 @@ export class play2 extends Component {
         var prog = document.getElementById("myRange1")
         audio.currentTime= (prog.value/100)*audio.duration;
     }
-    upload = (e) =>{
-        console.log("submit works")
-        // console.log(this.state)
-        var myfile = document.getElementById("myfile").files[0];
-        // var res = myfile.name.split(".")[0];
-        // console.log(res)
-        console.log(myfile)
-        const data = new FormData()
-        data.append('myfile', myfile)
-        var contenttype = {
-            headers : {
-                "content-type" : "multipart/form-data"
-            }
-        }
-        // upload audio file to server
-        console.log(data)
-        axios.post("http://localhost:5000/upload", data, contenttype)    
-        .then(res => console.log(res))
+    // upload = (e) =>{
+    //     console.log("submit works")
+    //     // console.log(this.state)
+    //     var myfile = document.getElementById("myfile").files[0];
+    //     // var res = myfile.name.split(".")[0];
+    //     // console.log(res)
+    //     console.log(myfile)
+    //     const data = new FormData()
+    //     data.append('myfile', myfile)
+    //     var contenttype = {
+    //         headers : {
+    //             "content-type" : "multipart/form-data"
+    //         }
+    //     }
+    //     // upload audio file to server
+    //     console.log(data)
+    //     axios.post("http://localhost:5000/upload", data, contenttype)    
+    //     .then(res => console.log(res))
         
-        // uploads name of the file which consequnly uploads the directry to the mongodb collection
-        const track_info = {name:myfile.name.toLowerCase().split(" ").join("")}
-        axios.post("http://localhost:5000/track/add", track_info)    
-        .then(res => console.log(res))
+    //     // uploads name of the file which consequnly uploads the directry to the mongodb collection
+    //     const track_info = {name:myfile.name.toLowerCase().split(" ").join("")}
+    //     axios.post("http://localhost:5000/track/add", track_info)    
+    //     .then(res => console.log(res))
         
-    }
-    onChangeHandler= (event) =>{
-        console.log(event.target.files[0])
-        console.log(document.getElementById("myfile").files[0])
+    // }
+    // onChangeHandler= (event) =>{
+    //     console.log(event.target.files[0])
+    //     console.log(document.getElementById("myfile").files[0])
 
-        this.setState({
-          selectedFile: event.target.files[0],
-          loaded: 0,
-        })
-      }
+    //     this.setState({
+    //       selectedFile: event.target.files[0],
+    //       loaded: 0,
+    //     })
+    //   }
 
     updatetimer = () => {
         var timer = document.getElementById("current_timer")
@@ -358,7 +373,13 @@ export class play2 extends Component {
         seconds = (seconds >= 10) ? seconds : "0" + seconds;
         timer.innerHTML =  minutes + ":" + seconds
         var prog = document.getElementById("myRange1")
-        prog.value = audio.currentTime/audio.duration * 100
+        // console.log(prog.value, audio.currentTime, audio.duration)
+        if(Number.isNaN(audio.duration)){
+            prog.value = 0;
+        }
+        else{
+            prog.value = (audio.currentTime/audio.duration) * 100
+        }
     }
 
 
@@ -389,7 +410,7 @@ export class play2 extends Component {
 
 
 
-                    <audio src={this.state.song_lst[index]} id="audio1" controls onTimeUpdate={this.updatetimer} />
+                    <audio ssrc="http://localhost:5000/download" id="audio1" controls onTimeUpdate={this.updatetimer} />
 
                     {/* <audio src="http://localhost:5000/download" id="audio1" controls /> */}
                     {/* <Forward onClick={this.forward}/>
@@ -405,7 +426,10 @@ export class play2 extends Component {
 
                     {/* <div className="breaker"></div> */}
                 </div>
+                <p id="current_timer">0:00</p>
+
                 <div className="bottom_player">
+
                         <img id ="small_cover" src={cover}/>
 
                         <img  onClick={() => this.backward()} id="bigback" src={back} alt="back"/>
@@ -413,15 +437,17 @@ export class play2 extends Component {
                         <img onClick={() => this.forward()} id="bignext" src={next} alt="back"/>
                         <h3 id="title2">DNA.</h3>
                         <p id="artist">Kendrick Lamar</p>
-                        <div className="progress_bar">
+                        {/* <div className="progress_bar">
                             <p id="current_timer">0:00</p>
                             <div className="slidecontainer">
                                 <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
                             </div>
-                            {/* <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input> */}
-                        </div>
+                        </div> */}
+
                         <div className="contain_slider1">
-                            <VolumeDown id='volume'/> <Slider defaultValue={30} id="volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
+                            <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
+                            <VolumeDown id='volume'/> 
+                            <Slider defaultValue={30} id="volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
 
                             {/* <input className="slider1" id="myRange1" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input> */}
                         </div>

@@ -1,0 +1,14 @@
+.add_item{
+    /* position: fixed; */
+    background-color: lightblue;
+    /* width: 70px; */
+    position: fixed;
+    bottom: 30px;
+    right: 60px;
+}
+#add_button{
+    width: 90px;
+    height: 90px;
+    background-color: rgb(107, 107, 180);
+    
+}

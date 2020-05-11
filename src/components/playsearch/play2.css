@@ -206,45 +206,53 @@
   color: white;
   opacity: 0.8;
   float: left;
-  margin-right: 2vh;
+  position: fixed;
+  left: 34%;
+  top:95vh;
+  z-index: 99;
   /* padding-top: 0.10vh; */
 
 }
 
-#time_bar{
+/* #time_bar{
   width:70vh;
   color:white;
   float: left;
   margin-right: 3vh;
   position: relative;
 
-}
-.progress_bar{
-  left: 80vh;
-  width:60%;
+} */
+/* .progress_bar{
+  left: 38%;
+  width:34%;
   position: fixed;
-  /* left: 175vh; */
-  bottom: 2.5vh;
-  /* background-color: black; */
-  height: 3vh;
+  bottom: 2.2vh;
+  height: 3%;
   float: left;
-}
+} */
 #volume_bar{
+  padding : 0;
   width:10%;
   color:white; 
-  position:fixed;
+  /* position:fixed; */
+  float: left;
+  margin-top: 1.5%;
 }
 #volume{
   color: white;
-  margin-right: 3%;
+  margin-right: 1%;
+  float: left;
+  margin-top: 0.6%;
+
+
 }
 .contain_slider1{
-  width:14%;
+  width:60%;
   position: fixed;
-  left: 80%;
-  bottom: 2.5vh;
+  left: 37.5%;
+  bottom: 1.8%;
   /* background-color: black; */
-  height: 3vh;
+  height: 4%;
   /* border: black 1px solid; */
 
 }
@@ -255,21 +263,28 @@
 
 .slidecontainer {
   /* border: black 1px solid; */
-  width: 50%;
+  width: 30%;
   float: left;
-  left: 80%;
+  left: 40%;
+  position: fixed;
+  bottom: 3%;
   /* background-color: black; */
 }
 
 .slider1 {
   -webkit-appearance: none;
-  width: 100%;
-  height: 0.2vh;
+  width: 45%;
+  height: 5.2%;
   border-radius: 5px;
   background: #ffffff;
   outline: none;
   -webkit-transition: .2s;
   transition: opacity .2s;
+  float: left;
+  margin-right: 29%;
+  margin-top: 1.5%;
+
+
 }
 
 .slider1:hover {
@@ -298,7 +313,3 @@
 
 
 /* ============================= */
-#myRange1{
-  /* width:65vh; */
-
-}

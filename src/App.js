@@ -1,12 +1,11 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom"
-import Play from "./components/play"
 import Search from "./Pages/search"
 import Login from "./components/login/login"
 import Signup from "./Pages/Singup/signup"
-import Nav from "./components/nav/nav"
-import Sample from "./Pages/sample/sample"
 import Land from "./Pages/land/land"
+import Explore from "./Pages/explore/Explore"
+import Upload from "./Pages/upload/Upload_page"
 
 import './App.css';
 
@@ -26,17 +25,26 @@ function App() {
             <Search {...props}/>
           </React.Fragment>
         )}/>
+        <Route exact path="/explore" render={ props =>(
+          <React.Fragment>
+            <Explore {...props}/>
+          </React.Fragment>
+        )}/>
         <Route exact path="/login" render={ props =>(
           <React.Fragment>
             <Login {...props}/>
           </React.Fragment>
         )}/>
-        <Route exact path="/Signup" render={ props =>(
+        <Route exact path="/signup" render={ props =>(
           <React.Fragment>
             <Signup {...props}/>
           </React.Fragment>
         )}/>
-      
+        <Route exact path="/upload" render={ props =>(
+          <React.Fragment>
+            <Upload {...props}/>
+          </React.Fragment>
+        )}/>
       </div>
     </Router>
   );
