@@ -9,7 +9,14 @@ const Playlist = new mongoose.Schema({
         type: String,
         default: ""
     },
+    title:{
+        type: String
+    },
+    creator:{
+        type: String
+    },
     Songs:[{type: String}]
+
     
 });
 

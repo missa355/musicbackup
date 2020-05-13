@@ -24,6 +24,7 @@ import VolumeDown from '@material-ui/icons/VolumeDown';
 
 
 
+
 import "./play2.css"
 
 var audio = document.getElementById("audio1")
@@ -39,7 +40,8 @@ export class play2 extends Component {
         volume: 0.3,
         progress: 0,
         duration: 60, //this is in seconds
-        selectedFile: null
+        selectedFile: null,
+        exists: false
 
     }; 
 
@@ -210,23 +212,48 @@ export class play2 extends Component {
     //=================================================================================================================
     //testing using hard-ishcode
     componentDidMount = () => {
-        axios.get("http://localhost:5000/track")    
+        // localStorage.setItem(this.props.match.params.pid, 0)
+        axios.get(`http://localhost:5000/playlist/${this.props.match.params.pid}`)
         .then(res => {
-            for(var i=0;i<res.data.length;i++){
-                this.setState({song_names: [...this.state.song_names, res.data[i].Name]})
-                // console.log(this.state.song_names)
-            }
-        })  
-        audio = document.getElementById("audio1")
-        // audio.src = track1
-        audio.onended = () => {
-            this.forward()
+            // console.log(this.props.match.params.pid, res.data)
+            if(res.data.length === 1) {
+                console.log(res.data[0].CID)
+                // localStorage.setItem(this.props.match.params.pid, 1)                
+                this.setState({exists:true})
 
-        }
-        var slider = document.getElementById("volume_bar")
-        slider.defaultValue = this.state.volume * 100
-        // var prog = document.getElementById("time_bar")
-        // prog.value = this.state.progress
+            }})    
+            // window.location.reload(false); 
+
+
+
+            axios.get("http://localhost:5000/track")    
+            .then(res => {
+                for(var i=0;i<res.data.length;i++){
+                    this.setState({song_names: [...this.state.song_names, res.data[i].Name]})
+                    // console.log(this.state.song_names)
+                }
+            })  
+
+ 
+            audio = document.getElementById("audio1")
+            // audio.src = track1
+            if(audio){
+                audio.onended = () => {
+                    this.forward()
+    
+                }
+            }
+ 
+            var slider = document.getElementById("volume_bar")
+            if(slider){
+                slider.defaultValue = this.state.volume * 100
+
+            }
+            // var prog = document.getElementById("time_bar")
+            // prog.value = this.state.progress
+        
+
+        
 
 
     }
@@ -387,76 +414,53 @@ export class play2 extends Component {
     //=================================================================================================================
       
     render() {
-        return (
-            <div id="search_div">
-                <Navbar></Navbar>
+            // console.log("we are in business")
+        
+            return (
+                <div id="search_div">
+                    <Navbar></Navbar>
 
-                <div className="main_block_search" style={{height:`${44 + 8.5*this.state.song_names.length}vh`}}>
+                    <div className="main_block_search" style={{height:`${44 + 8.5*this.state.song_names.length}vh`}}>
 
-            
-                    {/* <img src={vinyl} alt="VinylS" id="vinyl"/> */}
-                    <div id="infobox">
-                        <img alt="damn" src={cover}/>
-                        <h2>DAMN.</h2>
-                        <p>Studio album by Kendrick Lamar</p>
-                    </div>
-                    {this.state.song_names.map((block, i) => 
-                            <Record className="tracks" key={i} onClick={() => this.play(i, false)} name={block}/>
+                        <div id="infobox">
+                            <img alt="damn" src={cover}/>
+                            <h2>DAMN.</h2>
+                            <p>Studio album by Kendrick Lamar</p>
+                        </div>
+                        {this.state.song_names.map((block, i) => 
+                                <Record className="tracks" key={i} onClick={() => this.play(i, false)} name={block}/>
                         )}
-                        {/* <input onChange={this.onChangeHandler} type="file" name="myfile" id="myfile" accept="audio/*"/>
-                        <button onClick={this.upload}>submit</button> */}
 
+                        <audio ssrc="http://localhost:5000/download" id="audio1" controls onTimeUpdate={this.updatetimer} />
 
-
-
-
-                    <audio ssrc="http://localhost:5000/download" id="audio1" controls onTimeUpdate={this.updatetimer} />
-
-                    {/* <audio src="http://localhost:5000/download" id="audio1" controls /> */}
-                    {/* <Forward onClick={this.forward}/>
-                    <Backward onClick={this.backward}/> */}
-                    {/* <h3 id="title1">♥ Why not pick a song OWO ♥ </h3> */}
-
-                    {/* <div className="contain_slider1">
-                        <input className="slider1" id="myRange1" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
                     </div>
-                    <div className="progress_bar">
-                        <input className="slider1" id="progress" type="range" min="0" max="100" step="1" onChange={() => this.SetProgress()}></input>
-                    </div> */}
+                    <p id="current_timer">0:00</p>
 
-                    {/* <div className="breaker"></div> */}
-                </div>
-                <p id="current_timer">0:00</p>
+                    <div className="bottom_player">
 
-                <div className="bottom_player">
+                            <img id ="small_cover" alt="album cover" src={cover}/>
 
-                        <img id ="small_cover" src={cover}/>
+                            <img  onClick={() => this.backward()} id="bigback" src={back} alt="back"/>
+                            <img onClick={() => this.play(0, true)} id="bigplay" src={bigplay} alt="back"/>
+                            <img onClick={() => this.forward()} id="bignext" src={next} alt="back"/>
+                            <h3 id="title2">DNA.</h3>
+                            <p id="artist">Kendrick Lamar</p>
 
-                        <img  onClick={() => this.backward()} id="bigback" src={back} alt="back"/>
-                        <img onClick={() => this.play(0, true)} id="bigplay" src={bigplay} alt="back"/>
-                        <img onClick={() => this.forward()} id="bignext" src={next} alt="back"/>
-                        <h3 id="title2">DNA.</h3>
-                        <p id="artist">Kendrick Lamar</p>
-                        {/* <div className="progress_bar">
-                            <p id="current_timer">0:00</p>
-                            <div className="slidecontainer">
+                            <div className="contain_slider1">
                                 <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
+                                <VolumeDown id='volume'/> 
+                                <Slider defaultValue={30} id="volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
+
                             </div>
-                        </div> */}
 
-                        <div className="contain_slider1">
-                            <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
-                            <VolumeDown id='volume'/> 
-                            <Slider defaultValue={30} id="volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
 
-                            {/* <input className="slider1" id="myRange1" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input> */}
                         </div>
 
+                </div>
+                
+            )
 
-                    </div>
-
-            </div>
-        )
+        
     }
 }
 

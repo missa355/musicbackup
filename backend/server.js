@@ -41,15 +41,14 @@ const verifyRouter = require('./api/routes/verify');
 app.use('/verify', verifyRouter);
 const logoutRouter = require('./api/routes/logout');
 app.use('/logout', logoutRouter);
-
 const uploadRouter = require('./api/routes/upload');
 app.use('/upload', uploadRouter);
-
 const trackRouter = require('./api/routes/Track');
 app.use('/track', trackRouter);
-
 const downloadRouter = require('./api/routes/download');
 app.use('/download', downloadRouter);
+const playlistRouter = require('./api/routes/playlist');
+app.use('/playlist', playlistRouter);
 
 
 //this the part that is triggerd by axios.get(localhost/Recipes). res.json send the data to axios as a json format

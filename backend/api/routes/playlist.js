@@ -1,6 +1,6 @@
 const router = require('express').Router();
 //creating Recipe object by requiring class
-let Playlist = require('../models/playlist');
+let Playlist = require('../../models/Playlist');
 
 //this the part that is triggerd by axios.get(localhost/Recipes). res.json send the data to axios as a json format
 router.route('/').get((req, res) => {
@@ -9,25 +9,31 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add_playlist').post((req, res) => { //if localhost:5000/add is called
+router.route('/add').post((req, res) => { //if localhost:5000/add is called
   const PID = req.body.PID;
   const CID = req.body.CID;
-  const Songs = req.body.Songs;
+  const title = req.body.Title;
+  const creator = req.body.creator;
+  const Songs = []; //defualt value of a new playlist
 
 
 
-  const newPlaylist = new Playlist({PID, CID, Songs});
+  const newPlaylist = new Playlist({PID, CID, title, creator, Songs});
+  console.log(newPlaylist)
 
   newPlaylist.save() //saves the recipe(which was made into proper form) in the mongodb database
-    .then(() => res.json('Playlist  added!'))
+    .then(() => res.json('Playlist added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// router.route('/:id').get((req, res) => {
-//   Recipe.findById(req.params.id)
-//     .then(recipes => res.json(recipes))
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
+router.route('/:id').get((req, res) => {
+    // console.log(req.params.id)
+    Playlist.find({PID:req.params.id})
+    .then(recipes => {
+        // console.log(recipes)
+        res.json(recipes)})
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 // router.route('/:id').delete((req, res) => {
 //   Recipe.findByIdAndDelete(req.params.id)

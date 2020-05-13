@@ -7,11 +7,11 @@ export class media_card extends Component {
     render() {
         return (
             <div>
-                <Link to="/search">
+                <Link to={`/playlist/${this.props.pid}`}>
                     <div id="outer">
                         <div id="inner"></div>   
-                        <h4>DAMN.</h4>     
-                        <p>Kendric Lamar</p>     
+                        <h4>{this.props.title}</h4>     
+                        <p>{this.props.creator}</p>     
                     </div>
                 </Link>
             </div>
