@@ -3,9 +3,12 @@ import Dropzone from "../dropzone/Dropzone";
 import "./Upload.css";
 import Progress from "../progress/Progress";
 import Check from "../checkbox"
+import TextField from '@material-ui/core/TextField';
 import axios from "axios"
+import PickBox from "../pick_box"
 
 var file_counter = 0;
+var id_lst = ["track1", "track2", "track3"]
 
 class Upload extends Component {
   constructor(props) {
@@ -23,6 +26,11 @@ class Upload extends Component {
     this.renderActions = this.renderActions.bind(this);
   }
 
+  pick = (chosen)=>{
+    console.log(chosen)
+
+  }
+
   onFilesAdded(files) {
 
     file_counter += files.length;
@@ -38,8 +46,13 @@ class Upload extends Component {
   async uploadFiles() {
     this.setState({ uploadProgress: {}, uploading: true });
     const promises = [];
+    var curr = 0
     this.state.files.forEach(file => {
-      promises.push(this.sendRequest(file));
+      var value = document.getElementById(id_lst[curr]).value
+      // file.name = value;
+      // console.log(file.name)
+      promises.push(this.sendRequest(file, value));
+      curr +=1;
     });
     try {
       await Promise.all(promises);
@@ -51,7 +64,7 @@ class Upload extends Component {
     }
   }
 
-  sendRequest(file) {
+  sendRequest(file, song_name) {
     return new Promise((resolve, reject) => {
       const req = new XMLHttpRequest();
 
@@ -79,6 +92,7 @@ class Upload extends Component {
         this.setState({ uploadProgress: copy });
         reject(req.response);
       });
+      console.log(song_name)
 
       const formData = new FormData();
       formData.append("file", file);
@@ -88,15 +102,36 @@ class Upload extends Component {
         }
     }
 
+      var retrievedObject = localStorage.getItem("chosen_playlists")
+      var chosen_playlists = JSON.parse(retrievedObject)
       // upload audio file to server
-      // console.log(formData)
+
+
+      console.log(chosen_playlists.gilad)
+
+      console.log(formData)
       axios.post("http://localhost:5000/upload", formData, contenttype)    
       .then(res => console.log(res))
       
       // uploads name of the file which consequnly uploads the directry to the mongodb collection
-      const track_info = {name:file.name.toLowerCase().split(" ").join("")}
-      axios.post("http://localhost:5000/track/add", track_info)    
-      .then(res => console.log(res))
+ 
+      // const track_info = {name:song_name.toLowerCase().split(" ").join("")}
+      // axios.post("http://localhost:5000/track/add", track_info)    
+      // .then(res => console.log(res))
+      
+      if(song_name.includes(".mp3") === true){
+        const track_info = {name:song_name}
+        axios.post("http://localhost:5000/track/add", track_info)    
+        .then(res => console.log(res))
+        
+    }
+      if(song_name.includes(".mp3") === false){
+        const track_info = {name:song_name.concat(".mp3")}
+        console.log(track_info.name)
+        axios.post("http://localhost:5000/track/add", track_info)    
+        .then(res => console.log(res))
+      }
+
     });
   }
 
@@ -120,6 +155,7 @@ class Upload extends Component {
     }
   }
 
+
   renderActions() {
       return (
         <div>
@@ -137,6 +173,7 @@ class Upload extends Component {
           >
             Save
           </button>
+          <PickBox/>
         </div>
       );
   }
@@ -144,7 +181,7 @@ class Upload extends Component {
   render() {
     return (
       <div className="Upload">
-        <span className="Title">Upload Files</span>
+        <span className="Title"></span>
         <div className="Content">
           <div>
             <Dropzone
@@ -153,11 +190,13 @@ class Upload extends Component {
             />
           </div>
           <div className="Files">
-            {this.state.files.map(file => {
+            {this.state.files.map((file, i) => {
               return (
-                <div key={file.name} className="Row">
-                  <span className="Filename">{file.name}</span>
-                  {this.renderProgress(file)}
+                 <div key={file.name} className="Row">
+                    <span className="Filename">
+                      <TextField fullWidth required id={id_lst[i]} variant="filled" label="Trackname" defaultValue={file.name} />
+                    </span>
+                    {this.renderProgress(file)}
                 </div>
               );
             })}

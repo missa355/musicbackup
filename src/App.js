@@ -8,6 +8,7 @@ import Explore from "./Pages/explore/Explore"
 import Upload from "./Pages/upload/Upload_page"
 import axios from "axios"
 import Playlist from "./components/playsearch/play2"
+import Testcomp from "./components/pick_box"
 
 import './App.css';
 
@@ -64,12 +65,18 @@ export class App extends Component {
               <Upload {...props}/>
             </React.Fragment>
           )}/>
+
+          <Route exact path="/test" render={ props =>(
+            <React.Fragment>
+              <Testcomp {...props}/>
+            </React.Fragment>
+          )}/>
         
 
         {this.state.urls.map((block, i) => 
-            <Route exact path={`/playlist/${block}`} render={ props =>(
+            <Route key={i} exact path={`/playlist/${block}`} render={ props =>(
               <React.Fragment>
-                <Playlist pid={block} {...props}/>
+                <Playlist key={i} pid={block} {...props}/>
               </React.Fragment>          
             )}/>        
           )}

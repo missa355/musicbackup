@@ -2,13 +2,13 @@ const router = require('express').Router();
 //creating Recipe object by requiring class
 let Playlist = require('../../models/Playlist');
 
-//this the part that is triggerd by axios.get(localhost/Recipes). res.json send the data to axios as a json format
+//this get request dtermines the playlist to actually create as a route (locahost:3000/playlist/PID)
 router.route('/').get((req, res) => {
     Playlist.find()
     .then(playlist => res.json(playlist))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-
+// adds a newly created playlist to the DB
 router.route('/add').post((req, res) => { //if localhost:5000/add is called
   const PID = req.body.PID;
   const CID = req.body.CID;
@@ -26,6 +26,7 @@ router.route('/add').post((req, res) => { //if localhost:5000/add is called
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+//uniqley dtermines the content of a certain playlist
 router.route('/:id').get((req, res) => {
     // console.log(req.params.id)
     Playlist.find({PID:req.params.id})

@@ -25,7 +25,7 @@ const Account_logos = [<LockOpenIcon/>,<CreateIcon/>]
 const General_logos = [<HomeIcon/>, <SearchIcon/>, <PlaylistPlayIcon/>, <LiveHelpIcon/>, <SettingsIcon/>, <ContactMailIcon/>]
 const creators_logos = [<PublishIcon/>, <ShowChartIcon/>, <ContactMailIcon/>]
 const path_lst_1 = ["/login", "/signup"]
-const path_lst_2 = ["/", "/Search", "/explore", "/", "/", "/"]
+const path_lst_2 = ["/", "/Search", "/Search", "/", "/", "/"]
 const path_lst_3 = ["/upload", "/", "/"]
 
 const useStyles = makeStyles({

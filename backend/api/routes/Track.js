@@ -13,7 +13,7 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => { //if localhost:5000/add is called
   console.log("adding track stage 1")
   const Name = req.body.name.split(".")[0];
-  const Url = __dirname + "/upload_files/" + req.body.name;
+  const Url = __dirname + "/upload_files/" + req.body.name.toLowerCase().split(" ").join("");
 
   console.log(Name, Url)
 

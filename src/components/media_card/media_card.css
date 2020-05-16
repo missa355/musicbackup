@@ -1,7 +1,7 @@
 #outer{
     float: left;
-    height: 350px;
-    width: 250px;
+    height: 280px;
+    width: 200px;
     margin: 10px;
     margin-top: 1%;
     margin-bottom: 50px;
@@ -21,8 +21,8 @@
     position: absolute;
     left: 25px;
     top: 30px;
-    height: 200px;
-    width: 80%;
+    height: 150px;
+    width: 150px;
     /* border-radius: 4%; */
     background-color: rgb(126, 121, 121);
     background-image: url("../../Photos//DAMN.png");
@@ -31,15 +31,16 @@
 }
 #outer h4{
     color: rgb(0, 0, 0);
+    font-size: 20px;
     position: absolute;
     left: 22px;
-    top: 250px;
+    top: 200px;
 }
 #outer p{
     color: rgb(0, 0, 0);
     position: absolute;
     left: 22px;
-    top: 290px;
+    top: 233px;
     opacity: 0.70;
 }
 

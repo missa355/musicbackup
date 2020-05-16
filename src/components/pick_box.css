@@ -1,0 +1,62 @@
+.custom-ui{
+    /* background-color: rgb(102, 95, 95); */
+    width: 500px;
+    padding: 20px;
+    height: 300px;
+    position: relative;
+    overflow-y: scroll;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    /* flex-direction: column; */
+}
+
+
+.custom-ui h3{
+    /* text-align: center; */
+    padding-left: 10px;
+    width: 100%;
+    float: left;
+    /* background-color: black; */
+}
+ul {
+    list-style-type: none;
+    float: left;
+}
+
+.add_play{
+    float: left;
+    width: 95%;
+    margin: 10px;
+    line-height: 60px;
+    font-size: 30px;
+    border-bottom: 1px rgb(255, 254, 254) solid;
+    padding-bottom: 0px;
+}
+.add_play button{
+    float: right;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    min-width: 50px;
+    border-radius: 10px;
+
+}
+.add_play p{
+    float: left;
+    margin: 0;
+    font-size: 20px;
+    
+    
+}
+
+.container button{
+    position: absolute;
+    left: 90%;
+    top:5px;
+    background-color: rgba(0, 0, 0, 0.884);
+    min-width: 50px;
+}
