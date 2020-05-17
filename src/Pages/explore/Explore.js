@@ -15,7 +15,7 @@ export class Explore extends Component {
     }
 
     componentDidMount = () =>{
-        axios.get('http://localhost:5000/playlist/')
+        axios.get('https://teaaurora.ngrok.io/playlist/')
         .then(res => {
             console.log(res.data[0])
             for(var i=0;i<res.data.length;i++){

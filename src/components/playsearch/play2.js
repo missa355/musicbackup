@@ -20,17 +20,19 @@ import Navbar from "../side_burger"
 import cover from "../../Photos/DAMN.png"
 import Slider from '@material-ui/core/Slider';
 import VolumeDown from '@material-ui/icons/VolumeDown';
-
-
-
+import playbutt from "../../Photos/music.png"
+import recordpause from "../../Photos/signs.png"
 
 
 import "./play2.css"
+
+
 
 var audio = document.getElementById("audio1")
 var is_on = false
 var index = 0
 var curr_volume = 0.3
+var record_ind = 0
 
 // var volume = 0.1
 export class play2 extends Component {
@@ -48,7 +50,7 @@ export class play2 extends Component {
     //=================================================================================================================
     componentDidMount = () => {
         // localStorage.setItem(this.props.match.params.pid, 0)
-        axios.get(`http://localhost:5000/playlist/${this.props.match.params.pid}`)
+        axios.get(`https://teaaurora.ngrok.io/playlist/${this.props.match.params.pid}`)
         .then(res => {
             // console.log(this.props.match.params.pid, res.data)
             if(res.data.length === 1) {
@@ -61,7 +63,7 @@ export class play2 extends Component {
 
 
 
-            axios.get("http://localhost:5000/track")    
+            axios.get("https://teaaurora.ngrok.io/track")    
             .then(res => {
                 for(var i=0;i<res.data.length;i++){
                     this.setState({song_names: [...this.state.song_names, res.data[i].Name.toLowerCase().split(" ").join("")]})
@@ -97,26 +99,83 @@ export class play2 extends Component {
         // prog.click();
         // audio = document.getElementById("audio")
         // audio.pause()
+        // console.log(is_on, i, index)
         if(!main){
-            index = i
 
-            axios.get(`http://localhost:5000/download/${this.state.song_names[index]}`)    
-            .then(res => console.log(res))
 
-            audio.src = `http://localhost:5000/download/${this.state.song_names[index]}`
-            // audio.src = this.state.song_lst[index]
-            // audio.volume = this.state.volume 
+            // axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[i]}`)    
+            // .then(res => console.log(res))
+
+            // audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[i]}`
+            // // audio.src = this.state.song_lst[index]
+            // // audio.volume = this.state.volume 
             audio.volume = curr_volume
-            audio.play()
-            document.getElementById("bigplay").src=pause;
+            if(is_on === false){
+                // console.log("is not on")
+                axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[i]}`)    
+                .then(res => console.log(res))
+    
+                audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[i]}`
+                // audio.src = this.state.song_lst[index]
+                // audio.volume = this.state.volume 
 
-            is_on = true;
+                audio.play()
+                record_ind = 1
+
+                document.getElementById(this.state.song_names[i]).src = recordpause
+                document.getElementById("bigplay").src=pause;
+
+                is_on = true;
+                index = i
+
+                return ;
+
+            }
+
+            else if(is_on === true  && index === i){
+                // console.log("is on and indexes are the same")
+                audio.pause()
+                record_ind = 0
+
+                document.getElementById(this.state.song_names[i]).src = playbutt
+                // document.getElementById(this.state.song_names[i]).stateIndex = 0
+                document.getElementById("bigplay").src=bigplay;
+
+                is_on = false
+                return ;
+
+                
+    
+            }
+
+            else if(is_on === true && index !== i){
+                // console.log("picked different one")
+                axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[i]}`)    
+                .then(res => console.log(res))
+    
+                audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[i]}`
+
+
+                // document.getElementById(this.state.song_names[index]).stateIndex = 0
+                // document.getElementById(this.state.song_names[i]).stateIndex = 1
+                document.getElementById(this.state.song_names[index]).src = playbutt
+                document.getElementById(this.state.song_names[i]).src = recordpause
+
+                
+                audio.play()
+                record_ind = 1
+                index = i
+
+                is_on = true;
+                return ;
+
+            }
+
 
     
             // is_on = true;
             // audio.play()
 
-            return ;
 
         }
 
@@ -152,10 +211,10 @@ export class play2 extends Component {
         is_on = false;
         index = (index + 1) % this.state.song_names.length
         // this.setState({index: index % 3})
-        axios.get(`http://localhost:5000/download/${this.state.song_names[index]}`)    
+        axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`)    
         .then(res => console.log(res))
 
-        audio.src = `http://localhost:5000/download/${this.state.song_names[index]}`       
+        audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`       
         this.play(index, true)
         // audio.play()
 
@@ -169,10 +228,10 @@ export class play2 extends Component {
         if(index < 0){
             index = this.state.song_names.length - 1
         }
-        axios.get(`http://localhost:5000/download/${this.state.song_names[index]}`)    
+        axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`)    
         .then(res => console.log(res))
 
-        audio.src = `http://localhost:5000/download/${this.state.song_names[index]}`
+        audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`
         this.play(index, true)
 
     
@@ -263,10 +322,10 @@ export class play2 extends Component {
                             <p>Studio album by Kendrick Lamar</p>
                         </div>
                         {this.state.song_names.map((block, i) => 
-                                <Record className="tracks" key={i} onClick={() => this.play(i, false)} name={block}/>
+                                <Record className="tracks" key={i} onClick={() => this.play(i, false)} name={block} stateIndex={record_ind}/>
                         )}
 
-                        <audio ssrc="http://localhost:5000/download" id="audio1" controls onTimeUpdate={this.updatetimer} />
+                        <audio src="https://teaaurora.ngrok.io/download" id="audio1" controls onTimeUpdate={this.updatetimer} />
 
                     </div>
                     <p id="current_timer">0:00</p>

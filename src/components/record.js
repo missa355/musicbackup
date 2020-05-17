@@ -4,16 +4,24 @@ import playbutt from "../Photos/music.png"
 import { PropTypes } from 'prop-types'
 import Addplay from "../components/pick_box";
 
+
 export class record extends Component {
 
     onclick = () =>{
+        // if(ind === 0){
+        //     ind = 1
+        // }
+        // else if(ind === 1){
+        //     ind = 0
+        // }
         this.props.onClick()
+
     }
     
     render() {
         return (
                 <div className="elem">
-                    <img src={playbutt} onClick={this.onclick} alt="vinyl"/> 
+                    <img id={this.props.name} src={playbutt} onClick={this.onclick} alt="vinyl"/> 
                     <p>{this.props.name}</p>
                     <Addplay/>
                 </div>

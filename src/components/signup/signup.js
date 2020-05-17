@@ -22,7 +22,7 @@ export class signup extends Component {
             isDeleted: false
             }
         
-        axios.post("http://localhost:5000/signup/add", User) //this 
+        axios.post("https://teaaurora.ngrok.io/signup/add", User) //this 
         .then(res => console.log(res.data)); 
             
         // window.location = '/';

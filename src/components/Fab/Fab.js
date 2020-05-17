@@ -32,7 +32,7 @@ import "./Fab.css"
             Title: val,
             creator: "Leon iden"
         }
-        axios.post("http://localhost:5000/playlist/add", playlst)
+        axios.post("https://teaaurora.ngrok.io/playlist/add", playlst)
         .then(res => console.log(res))
         setOpen(false);
 

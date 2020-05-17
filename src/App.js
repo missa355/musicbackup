@@ -20,7 +20,7 @@ export class App extends Component {
 
 
   componentDidMount = () => {
-    axios.get("http://localhost:5000/playlist")    
+    axios.get("https://teaaurora.ngrok.io/playlist")    
     .then(res => {
         for(var i=0;i<res.data.length;i++){
             this.setState({urls: [...this.state.urls, res.data[i].PID]})
