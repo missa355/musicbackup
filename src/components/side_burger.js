@@ -87,7 +87,7 @@ export default function SwipeableTemporaryDrawer() {
       <List>
         <ListItem><h3>For Creators</h3></ListItem>
 
-        {['Upload', 'Promote', 'Contact'].map((text, index) => (
+        {['Upload', 'Uploaded music', 'Contact'].map((text, index) => (
            <Link key={index} style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_3[index]}><ListItem button key={text}>
             <ListItemIcon>{creators_logos[index]}</ListItemIcon>
             <ListItemText primary={text} />

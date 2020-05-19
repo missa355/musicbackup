@@ -12,7 +12,7 @@ import bigplay from "../../Photos/play.png"
 import bigresume from "../../Photos/bottom_resume.png"
 import pause from "../../Photos/pause.png"
 // import Nav from "../../components/nav2/nav2"
-import Record from "../../components/record"
+import Record from "../record"
 import next from "../../Photos/forward.png"
 import back from "../../Photos/backward.png"
 import axios from "axios"
@@ -108,7 +108,7 @@ export class play2 extends Component {
             // // audio.volume = this.state.volume 
             audio.volume = curr_volume
             if(is_on === false){
-                console.log("is not on")
+                // console.log("is not on")
                 axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[i]}`)    
                 .then(res => console.log(res))
     
@@ -130,7 +130,7 @@ export class play2 extends Component {
             }
 
             else if(is_on === true  && index === i){
-                console.log("is on and indexes are the same")
+                // console.log("is on and indexes are the same")
                 audio.pause()
                 record_ind = 0
 
@@ -146,7 +146,7 @@ export class play2 extends Component {
             }
 
             else if(is_on === true && index !== i){
-                console.log("picked different one")
+                // console.log("picked different one")
                 axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[i]}`)    
                 .then(res => console.log(res))
     
@@ -207,14 +207,14 @@ export class play2 extends Component {
     forward = () => {
 
         // this.setState({song_on: false})
-        // is_on = false;
-        // index = (index + 1) % this.state.song_names.length
+        is_on = false;
+        index = (index + 1) % this.state.song_names.length
         // this.setState({index: index % 3})
-        // axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`)    
-        // .then(res => console.log(res))
+        axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`)    
+        .then(res => console.log(res))
 
-        // audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`       
-        this.play((index + 1) % this.state.song_names.length, false)
+        audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`       
+        this.play(index, true)
         // audio.play()
 
 
@@ -222,16 +222,16 @@ export class play2 extends Component {
     }
 
     backward = () => {
-        // is_on = false;
-        var holder = index - 1
-        if(holder < 0){
-            holder = this.state.song_names.length - 1
+        is_on = false;
+        index = index - 1
+        if(index < 0){
+            index = this.state.song_names.length - 1
         }
         axios.get(`https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`)    
         .then(res => console.log(res))
 
-        // audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`
-        this.play(holder, false)
+        audio.src = `https://teaaurora.ngrok.io/download/${this.state.song_names[index]}`
+        this.play(index, true)
 
     
         
@@ -249,6 +249,40 @@ export class play2 extends Component {
         var prog = document.getElementById("myRange1")
         audio.currentTime= (prog.value/100)*audio.duration;
     }
+    // upload = (e) =>{
+    //     console.log("submit works")
+    //     // console.log(this.state)
+    //     var myfile = document.getElementById("myfile").files[0];
+    //     // var res = myfile.name.split(".")[0];
+    //     // console.log(res)
+    //     console.log(myfile)
+    //     const data = new FormData()
+    //     data.append('myfile', myfile)
+    //     var contenttype = {
+    //         headers : {
+    //             "content-type" : "multipart/form-data"
+    //         }
+    //     }
+    //     // upload audio file to server
+    //     console.log(data)
+    //     axios.post("http://localhost:5000/upload", data, contenttype)    
+    //     .then(res => console.log(res))
+        
+    //     // uploads name of the file which consequnly uploads the directry to the mongodb collection
+    //     const track_info = {name:myfile.name.toLowerCase().split(" ").join("")}
+    //     axios.post("http://localhost:5000/track/add", track_info)    
+    //     .then(res => console.log(res))
+        
+    // }
+    // onChangeHandler= (event) =>{
+    //     console.log(event.target.files[0])
+    //     console.log(document.getElementById("myfile").files[0])
+
+    //     this.setState({
+    //       selectedFile: event.target.files[0],
+    //       loaded: 0,
+    //     })
+    //   }
 
     updatetimer = () => {
         var timer = document.getElementById("current_timer")
@@ -290,7 +324,7 @@ export class play2 extends Component {
                                 <Record className="tracks" key={i} onClick={() => this.play(i, false)} name={block} stateIndex={record_ind}/>
                         )}
 
-                        <audio src="https://teaaurora.ngrok.io/download/humble" id="audio1" controls onTimeUpdate={this.updatetimer} />
+                        <audio src="https://teaaurora.ngrok.io/download" id="audio1" controls onTimeUpdate={this.updatetimer} />
 
                     </div>
                     <p id="current_timer">0:00</p>

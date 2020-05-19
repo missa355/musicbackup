@@ -10,7 +10,8 @@ import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 export class pick_box extends Component {
   state = {
-    urls :[]
+    urls :[],
+    pids :[]
   }
 
   componentDidMount = () => {
@@ -18,11 +19,22 @@ export class pick_box extends Component {
     .then(res => {
         for(var i=0;i<res.data.length;i++){
             this.setState({urls: [...this.state.urls, res.data[i].title]})
+            this.setState({pids: [...this.state.pids, res.data[i].PID]})
+
             // console.log(this.state.song_names)
         }
     })
   }
-        submit = () => {
+  addtoplaylist = (i) => {
+    // console.log("fake added to playlists")
+    var playlst = {PID:this.state.pids[i], track:this.props.song}
+    axios.post("https://teaaurora.ngrok.io/playlist/add_track_to_playlist", playlst)
+    .then(res =>  console.log(res))    
+
+  }
+
+
+  submit = () => {
           confirmAlert({
             customUI: ({ onClose }) => {
               return (
@@ -31,23 +43,11 @@ export class pick_box extends Component {
                   {this.state.urls.map((block, i) => 
                     <div key={i} className="add_play">
                         <p>{block}</p>
-                        <button id="add_butt" onClick={() => {this.handleClickDelete(); onClose();}}>
+                        <button id="add_butt" onClick={() => {this.addtoplaylist(i)}}>
                           Add
                         </button>
                     </div>                 
                  )}
-
-                  
-                  {/* <div className="add_play">2</div>
-                  <div className="add_play">3</div>
-                  <div className="add_play">4</div>
-                  <div className="add_play">5</div>
-                  <div className="add_play">6</div>
-                  <div className="add_play">7</div>
-                  <div className="add_play">8</div>
-                  <div className="add_play">9</div> */}
-
-
                   
                 </div>
               );
@@ -58,7 +58,7 @@ export class pick_box extends Component {
         render() {
           return (
             <div className='container'>
-              <button onClick={this.submit}><PlaylistAddIcon/></button>
+              <button onClick={this.submit}><PlaylistAddIcon id="add_im"/></button>
             </div>
           );
         }

@@ -60,3 +60,12 @@ ul {
     background-color: rgba(0, 0, 0, 0.884);
     min-width: 50px;
 }
+
+.container button:hover{
+    background-color: rgba(0, 0, 0, 0.884);
+
+
+}
+#add_im:hover{
+    background-color: transparent;
+}

@@ -102,12 +102,9 @@ class Upload extends Component {
         }
     }
 
-      var retrievedObject = localStorage.getItem("chosen_playlists")
-      var chosen_playlists = JSON.parse(retrievedObject)
+ 
       // upload audio file to server
 
-
-      console.log(chosen_playlists.gilad)
 
       console.log(formData)
       axios.post("https://teaaurora.ngrok.io/upload", formData, contenttype)    
@@ -173,7 +170,7 @@ class Upload extends Component {
           >
             Save
           </button>
-          <PickBox/>
+
         </div>
       );
   }

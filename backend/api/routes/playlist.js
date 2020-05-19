@@ -36,6 +36,13 @@ router.route('/:id').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/add_track_to_playlist').post((req, res) => {
+    // console.log(req.params.id)
+    var Song = req.body.track;
+    Playlist.findOneAndUpdate({PID: req.body.PID}, {$push: {Songs: Song}})
+    .then(() => res.json('Song added to Playlists!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 // router.route('/:id').delete((req, res) => {
 //   Recipe.findByIdAndDelete(req.params.id)
 //     .then(() => res.json('Recipe deleted.'))

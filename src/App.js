@@ -8,7 +8,7 @@ import Explore from "./Pages/explore/Explore"
 import Upload from "./Pages/upload/Upload_page"
 import axios from "axios"
 import Playlist from "./components/playsearch/play2"
-import Testcomp from "./components/pick_box"
+import Testcomp from "./components/uploadedmusic/uploadedmusic"
 
 import './App.css';
 

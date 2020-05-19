@@ -15,7 +15,7 @@ router.route('/').post((req, res) => {
       // cb(null, Date.now() + '-' +file.originalname)
     }
   })
-  var upload = multer({ storage: storage }).array('file', 3)  
+  var upload = multer({ storage: storage }).single('file')  
 
   upload(req, res, function (err) {
     // console.log( req.body.new_file_name );
