@@ -13,15 +13,17 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => { //if localhost:5000/add is called
   console.log("adding track stage 1")
   const Name = req.body.name.split(".")[0];
-  const Url = __dirname + "/upload_files/" + req.body.name.toLowerCase().split(" ").join("");
+  const TID = req.body.TID
+  const Url = __dirname + "/upload_files/" + req.body.TID
 
-  console.log(Name, Url)
+  console.log(Name, TID, Url)
 
   if(!Name) {return res.end({'success':false , 'issue': 'Track has no name'})};
+  if(!TID) {return res.end({'success':false , 'issue': 'There is no TID'})};
   if(!Url) {return res.end({'success':false , 'issue': 'There is no link'})};
 
 
-  const newTrack = new Track({Name, Url});
+  const newTrack = new Track({Name, TID, Url});
 
   newTrack.save() //saves the recipe(which was made into proper form) in the mongodb database
     .then(() => res.json('Track added!'))

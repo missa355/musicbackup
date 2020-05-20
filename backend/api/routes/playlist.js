@@ -15,10 +15,11 @@ router.route('/add').post((req, res) => { //if localhost:5000/add is called
   const title = req.body.Title;
   const creator = req.body.creator;
   const Songs = []; //defualt value of a new playlist
+  const tids = []
 
 
 
-  const newPlaylist = new Playlist({PID, CID, title, creator, Songs});
+  const newPlaylist = new Playlist({PID, CID, title, creator, Songs, tids});
   console.log(newPlaylist)
 
   newPlaylist.save() //saves the recipe(which was made into proper form) in the mongodb database
@@ -39,9 +40,10 @@ router.route('/:id').get((req, res) => {
 router.route('/add_track_to_playlist').post((req, res) => {
     // console.log(req.params.id)
     var Song = req.body.track;
-    Playlist.findOneAndUpdate({PID: req.body.PID}, {$push: {Songs: Song}})
+    Playlist.findOneAndUpdate({PID: req.body.PID}, {$push: {Song_names: Song, Song_tids: req.body.tid}})
     .then(() => res.json('Song added to Playlists!'))
     .catch(err => res.status(400).json('Error: ' + err));
+
 });
 // router.route('/:id').delete((req, res) => {
 //   Recipe.findByIdAndDelete(req.params.id)

@@ -5,6 +5,10 @@ const Track = new mongoose.Schema({
         type: String,
         default: ""
     },
+    TID: {
+        type: String,
+        default: ""
+    },
     Url:{
         type: String,
         default: ""

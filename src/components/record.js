@@ -23,7 +23,7 @@ export class record extends Component {
                 <div className="elem">
                     <img id={this.props.name} src={playbutt} onClick={this.onclick} alt="vinyl"/> 
                     <p>{this.props.name}</p>
-                    <Addplay song={this.props.name}/>
+                    <Addplay tid={this.props.TID} song={this.props.name}/>
                 </div>
         )
     }

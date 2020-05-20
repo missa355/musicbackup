@@ -5,11 +5,13 @@ const router = require('express').Router();
 
 
 router.route('/').post((req, res) => {
+
   var storage = multer.diskStorage({
       destination: function (req, file, cb) {
       cb(null, __dirname + "/upload_files")
     },
       filename: function (req, file, cb) {
+      console.log(file.originalname)
       cb(null, file.originalname.toLowerCase().split(" ").join(""))
 
       // cb(null, Date.now() + '-' +file.originalname)

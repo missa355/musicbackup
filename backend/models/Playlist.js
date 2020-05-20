@@ -15,7 +15,10 @@ const Playlist = new mongoose.Schema({
     creator:{
         type: String
     },
-    Songs:[{type: String}]
+    Song_names:[{type: String}],
+    
+    Song_tids:[{type: String}]
+
 
     
 });

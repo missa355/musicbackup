@@ -5,7 +5,8 @@ import Progress from "../progress/Progress";
 import Check from "../checkbox"
 import TextField from '@material-ui/core/TextField';
 import axios from "axios"
-import PickBox from "../pick_box"
+import { v4 as uuidv4 } from 'uuid';
+
 
 var file_counter = 0;
 var id_lst = ["track1", "track2", "track3"]
@@ -94,8 +95,10 @@ class Upload extends Component {
       });
       console.log(song_name)
 
+      var TID = uuidv4()
+
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", file, `${TID}.mp3`);
       var contenttype = {
         headers : {
             "content-type" : "multipart/form-data"
@@ -107,7 +110,7 @@ class Upload extends Component {
 
 
       console.log(formData)
-      axios.post("https://teaaurora.ngrok.io/upload", formData, contenttype)    
+      axios.post("https://teaaurora.ngrok.io/upload",formData, contenttype)    
       .then(res => console.log(res))
       
       // uploads name of the file which consequnly uploads the directry to the mongodb collection
@@ -115,19 +118,23 @@ class Upload extends Component {
       // const track_info = {name:song_name.toLowerCase().split(" ").join("")}
       // axios.post("http://localhost:5000/track/add", track_info)    
       // .then(res => console.log(res))
+
+      const track_info = {name:song_name, TID:TID}
+      axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
+      .then(res => console.log(res))
       
-      if(song_name.includes(".mp3") === true){
-        const track_info = {name:song_name}
-        axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
-        .then(res => console.log(res))
+    //   if(song_name.includes(".mp3") === true){
+    //     const track_info = {name:song_name, TID:TID}
+    //     axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
+    //     .then(res => console.log(res))
         
-    }
-      if(song_name.includes(".mp3") === false){
-        const track_info = {name:song_name.concat(".mp3")}
-        console.log(track_info.name)
-        axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
-        .then(res => console.log(res))
-      }
+    // }
+      // if(song_name.includes(".mp3") === false){
+      //   const track_info = {name:song_name.concat(".mp3")}
+      //   console.log(track_info.name)
+      //   axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
+      //   .then(res => console.log(res))
+      // }
 
     });
   }

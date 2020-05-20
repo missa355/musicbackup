@@ -27,7 +27,8 @@ export class pick_box extends Component {
   }
   addtoplaylist = (i) => {
     // console.log("fake added to playlists")
-    var playlst = {PID:this.state.pids[i], track:this.props.song}
+    var playlst = {PID:this.state.pids[i], track:this.props.song, tid:this.props.tid}
+    console.log(playlst)
     axios.post("https://teaaurora.ngrok.io/playlist/add_track_to_playlist", playlst)
     .then(res =>  console.log(res))    
 
