@@ -20,6 +20,8 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import PublishIcon from '@material-ui/icons/Publish';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
+import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const Account_logos = [<LockOpenIcon/>,<CreateIcon/>]
 const General_logos = [<HomeIcon/>, <SearchIcon/>, <PlaylistPlayIcon/>, <LiveHelpIcon/>, <SettingsIcon/>, <ContactMailIcon/>]
@@ -27,6 +29,7 @@ const creators_logos = [<PublishIcon/>, <ShowChartIcon/>, <ContactMailIcon/>]
 const path_lst_1 = ["/login", "/signup"]
 const path_lst_2 = ["/", "/Search", "/Search", "/", "/", "/"]
 const path_lst_3 = ["/upload", "/", "/"]
+
 
 const useStyles = makeStyles({
   list: {
@@ -36,6 +39,12 @@ const useStyles = makeStyles({
     width: 'auto',
   },
 });
+
+const logout = () =>{
+  localStorage.clear()
+  console.log("logged out")
+  window.location.reload();
+}
 
 export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
@@ -96,6 +105,68 @@ export default function SwipeableTemporaryDrawer() {
       </List>
     </div>
   );
+
+  //=====================
+  const singed_in = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <ListItem><h3>Account</h3></ListItem>
+          <ListItem>
+          <ListItemIcon><PersonIcon/></ListItemIcon>
+          <ListItemText>{JSON.parse(localStorage.getItem('name'))}</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => logout()}>
+          <ListItemIcon><ExitToAppIcon/></ListItemIcon>
+          <ListItemText>Logout</ListItemText>
+          </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem><h3>General</h3></ListItem>
+
+        {['Home', 'Search', 'Playlists', 'FAQ', 'Settings', 'Support'].map((text, index) => (
+          <Link key={index} style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_2[index]}><ListItem button key={text}>
+            <ListItemIcon>{General_logos[index]}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem></Link>
+        ))}
+      </List>
+
+      <List>
+        <ListItem><h3>For Creators</h3></ListItem>
+
+        {['Upload', 'Uploaded music', 'Contact'].map((text, index) => (
+           <Link key={index} style={{ color: 'inherit', textDecoration: 'inherit'}} to = {path_lst_3[index]}><ListItem button key={text}>
+            <ListItemIcon>{creators_logos[index]}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem></Link>
+        ))}
+      </List>
+    </div>
+  );
+
+  if(JSON.parse(localStorage.getItem('valid'))){
+    return(    
+    <div>
+      <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: 'white' }} fontSize="large"></MenuIcon> </Button>
+      <SwipeableDrawer
+        anchor={'left'}
+        open={state['left']}
+        onClose={toggleDrawer('left', false)}
+        onOpen={toggleDrawer('left', true)}
+      >
+        {singed_in('left')}
+      </SwipeableDrawer>
+  
+</div>)
+  }
 
   return (
     <div>

@@ -185,10 +185,9 @@
 }
 
 #progress{
-  width: 70%
+  width: 70%;
 }
 #small_cover{
-  position: ;
   float: left;
   width: 60px;
   margin: 10px;

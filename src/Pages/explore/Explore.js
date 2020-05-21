@@ -7,6 +7,8 @@ import "nouislider/distribute/nouislider.css";
 import {Link} from "react-router-dom"
 import Fab from "../../components/Fab/Fab"
 import axios from "axios"
+import { Redirect } from 'react-router-dom'
+
 
 
 export class Explore extends Component {
@@ -15,6 +17,9 @@ export class Explore extends Component {
     }
 
     componentDidMount = () =>{
+        if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null)){
+            return;
+        }
         axios.get('https://teaaurora.ngrok.io/playlist/')
         .then(res => {
             console.log(res.data[0])
@@ -26,6 +31,9 @@ export class Explore extends Component {
 
     }
     render() {
+        if(JSON.parse(localStorage.getItem('valid') === false || localStorage.length === 0)){
+            return(<div><Redirect to="/login" /></div>)
+        }
         return (
             <div id="explore-background">
             <Fab/>

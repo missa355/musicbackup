@@ -21,6 +21,8 @@ import Slider from '@material-ui/core/Slider';
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import playbutt from "../../Photos/music.png"
 import recordpause from "../../Photos/signs.png"
+import { Redirect } from 'react-router-dom'
+
 
 
 import "./play2.css"
@@ -200,6 +202,8 @@ export class play2 extends Component {
         else{
             // this.setState({song_on: true})
             is_on = true;
+            document.getElementById(this.state.song_names[index]).src = recordpause
+
             document.getElementById("bigplay").src=pause;
             audio.play()
 
@@ -277,6 +281,9 @@ export class play2 extends Component {
       
     render() {
             // console.log("we are in business")
+            // if(JSON.parse(localStorage.getItem('valid') === false || localStorage.length === 0)){
+            //     return(<div><Redirect to="/login" /></div>)
+            // }
         
             return (
                 <div id="search_div">
@@ -307,7 +314,7 @@ export class play2 extends Component {
                             <div id="options">
                             
                                 <img onClick={() => this.backward()} id="bigback" src={back} alt="back" className="tools"/>
-                                <img onClick={() => this.play(index, false)} id="bigplay" src={bigplay} alt="back" className="tools"/>
+                                <img onClick={() => this.play(index, true)} id="bigplay" src={bigplay} alt="back" className="tools"/>
                                 <img onClick={() => this.forward()} id="bignext" src={next} alt="back" className="tools"/>
 
                             </div>

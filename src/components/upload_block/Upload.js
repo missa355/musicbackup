@@ -6,6 +6,8 @@ import Check from "../checkbox"
 import TextField from '@material-ui/core/TextField';
 import axios from "axios"
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom'
+
 
 
 var file_counter = 0;
@@ -122,6 +124,7 @@ class Upload extends Component {
       const track_info = {name:song_name, TID:TID}
       axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
       .then(res => console.log(res))
+
       
     //   if(song_name.includes(".mp3") === true){
     //     const track_info = {name:song_name, TID:TID}
@@ -171,12 +174,14 @@ class Upload extends Component {
           >
             Clear
           </button> 
-          <button
-            disabled={this.state.files.length < 0 || this.state.uploading}
-            onClick={this.uploadFiles}
-          >
-            Save
-          </button>
+          <Link to="/test">
+            <button
+              disabled={this.state.files.length < 0 || this.state.uploading}
+              onClick={this.uploadFiles}
+            >
+              Save
+            </button>
+          </Link>
 
         </div>
       );

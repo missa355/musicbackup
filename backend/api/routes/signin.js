@@ -18,12 +18,13 @@ router.route('/').post((req, res) => {
     //case2: valid password 
     //create a user session for the person implying that they arae logged in 
     if(user.validPassword(Password)){
+      console.log(users[0].Firstname + " " + users[0].Lastname)
       const usersession = new Usersess()
       usersession.UserId = user._id ; //document id in DB
       usersession.save((err, doc) => {
         if (err) {return res.send({sucess:false, message:"Invalid"})}
         // create an object thay relates a usersession and user by token(token points to a doc the holds and id that points to an associates user)
-        return res.send({success: true, message: "valid sign in", token:doc._id})  
+        return res.send({success: true, message: "valid sign in", token:doc._id, name:users[0].Firstname + " " + users[0].Lastname})  
       })
     }
 

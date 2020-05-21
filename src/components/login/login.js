@@ -23,14 +23,16 @@ export class login extends Component {
         axios.post("https://teaaurora.ngrok.io/signin", User) //this 
         .then(res =>  {
             // console.log('json',res.data);
-            if(res.data.success){
+            if(res.data.success === true){
                 console.log("valid user. Token saved locally", res.data.success);
                 setInStorage('the_main_app', {token: res.data.token});
                 setInStorage('valid', {token: res.data.success});
+                setInStorage('name', res.data.name);
                 // this.setState({loggedin:true})
                 window.location.reload();
-
-
+            }
+            else{   
+                console.log(res.data.success)
 
             }
         })
