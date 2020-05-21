@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.5398648b.chunk.css",
-    "main.js": "/static/js/main.985dd46b.chunk.js",
-    "main.js.map": "/static/js/main.985dd46b.chunk.js.map",
+    "main.css": "/static/css/main.a8192d93.chunk.css",
+    "main.js": "/static/js/main.84643283.chunk.js",
+    "main.js.map": "/static/js/main.84643283.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e30d1a73.js",
     "runtime-main.js.map": "/static/js/runtime-main.e30d1a73.js.map",
-    "static/css/2.2b87782e.chunk.css": "/static/css/2.2b87782e.chunk.css",
-    "static/js/2.d7eecf30.chunk.js": "/static/js/2.d7eecf30.chunk.js",
-    "static/js/2.d7eecf30.chunk.js.map": "/static/js/2.d7eecf30.chunk.js.map",
+    "static/css/2.cc9d2894.chunk.css": "/static/css/2.cc9d2894.chunk.css",
+    "static/js/2.17c799c4.chunk.js": "/static/js/2.17c799c4.chunk.js",
+    "static/js/2.17c799c4.chunk.js.map": "/static/js/2.17c799c4.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.2974613c3879d47484967550080c62b0.js": "/precache-manifest.2974613c3879d47484967550080c62b0.js",
+    "precache-manifest.5a2a4ce8a1a385e16aeb633592db1504.js": "/precache-manifest.5a2a4ce8a1a385e16aeb633592db1504.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.2b87782e.chunk.css.map": "/static/css/2.2b87782e.chunk.css.map",
-    "static/css/main.5398648b.chunk.css.map": "/static/css/main.5398648b.chunk.css.map",
-    "static/js/2.d7eecf30.chunk.js.LICENSE.txt": "/static/js/2.d7eecf30.chunk.js.LICENSE.txt",
+    "static/css/2.cc9d2894.chunk.css.map": "/static/css/2.cc9d2894.chunk.css.map",
+    "static/css/main.a8192d93.chunk.css.map": "/static/css/main.a8192d93.chunk.css.map",
+    "static/js/2.17c799c4.chunk.js.LICENSE.txt": "/static/js/2.17c799c4.chunk.js.LICENSE.txt",
     "static/media/media_card.css": "/static/media/DAMN.7d837e26.png",
     "static/media/DNA.mp3": "/static/media/DNA.2e6a2150.mp3",
     "static/media/ELEMENT.mp3": "/static/media/ELEMENT.7cefb317.mp3",
@@ -21,7 +21,6 @@
     "static/media/HUMBLE.mp3": "/static/media/HUMBLE.f33a785f.mp3",
     "static/media/back2.png": "/static/media/back2.5e36dbc4.png",
     "static/media/background.png": "/static/media/background.24dd34ee.png",
-    "static/media/garage.jpg": "/static/media/garage.21b03352.jpg",
     "static/media/searchback.png": "/static/media/searchback.38b150c1.png",
     "static/media/track1.mp3": "/static/media/track1.eaff3933.mp3",
     "static/media/track2.mp3": "/static/media/track2.97f2d67d.mp3",
@@ -31,9 +30,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.e30d1a73.js",
-    "static/css/2.2b87782e.chunk.css",
-    "static/js/2.d7eecf30.chunk.js",
-    "static/css/main.5398648b.chunk.css",
-    "static/js/main.985dd46b.chunk.js"
+    "static/css/2.cc9d2894.chunk.css",
+    "static/js/2.17c799c4.chunk.js",
+    "static/css/main.a8192d93.chunk.css",
+    "static/js/main.84643283.chunk.js"
   ]
 }

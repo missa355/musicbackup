@@ -9,6 +9,7 @@ import Upload from "./Pages/upload/Upload_page"
 import axios from "axios"
 import Playlist from "./components/playsearch/play2"
 import Testcomp from "./components/uploadedmusic/uploadedmusic"
+import BottomTest from "./components/bottom_test"
 
 import './App.css';
 
@@ -40,11 +41,12 @@ export class App extends Component {
             </React.Fragment>
             )}/>
             
-          {/* <Route exact path="/search" render={ props =>(
+          <Route exact path="/bottom" render={ props =>(
             <React.Fragment>
-              <Search {...props}/>
+              <BottomTest {...props}/>
             </React.Fragment>
-          )}/> */}
+          )}/>
+
           <Route exact path="/search" render={ props =>(
             <React.Fragment>
               <Explore {...props}/>

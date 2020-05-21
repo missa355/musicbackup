@@ -92,6 +92,9 @@ export class play2 extends Component {
 
     }
     play = (i, main) =>{
+
+        var title = document.getElementById("title2")
+        title.innerHTML = this.state.song_names[i]
         // var prog = document.getElementById("time_bar")
         // prog.click();
         // audio = document.getElementById("audio")
@@ -293,21 +296,28 @@ export class play2 extends Component {
                         <audio src="https://teaaurora.ngrok.io/download/humble" id="audio1" controls onTimeUpdate={this.updatetimer} />
 
                     </div>
-                    <p id="current_timer">0:00</p>
 
                     <div className="bottom_player">
 
                             <img id ="small_cover" alt="album cover" src={cover}/>
+                            <div id="creator_info">
+                                <h3 id="title2">DNA.</h3>
+                                <p id="artist">Kendrick Lamar</p>
+                            </div>
+                            <div id="options">
+                            
+                                <img onClick={() => this.backward()} id="bigback" src={back} alt="back" className="tools"/>
+                                <img onClick={() => this.play(index, false)} id="bigplay" src={bigplay} alt="back" className="tools"/>
+                                <img onClick={() => this.forward()} id="bignext" src={next} alt="back" className="tools"/>
 
-                            <img  onClick={() => this.backward()} id="bigback" src={back} alt="back"/>
-                            <img onClick={() => this.play(0, true)} id="bigplay" src={bigplay} alt="back"/>
-                            <img onClick={() => this.forward()} id="bignext" src={next} alt="back"/>
-                            <h3 id="title2">DNA.</h3>
-                            <p id="artist">Kendrick Lamar</p>
+                            </div>
+
+
+                            <p id="current_timer" className="current_timer">0:00</p>
 
                             <div className="contain_slider1">
                                 <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
-                                <VolumeDown id='volume'/> 
+                                {/* <VolumeDown id='volume'/>  */}
                                 <Slider defaultValue={30} id="volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
 
                             </div>
