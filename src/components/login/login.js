@@ -28,6 +28,8 @@ export class login extends Component {
                 setInStorage('the_main_app', {token: res.data.token});
                 setInStorage('valid', {token: res.data.success});
                 setInStorage('name', res.data.name);
+                setInStorage('email', res.data.email);
+
                 // this.setState({loggedin:true})
                 window.location.reload();
             }
@@ -71,7 +73,7 @@ export class login extends Component {
                         </Col>
                     </Row>
                     <br/>
-                    <Button onClick={this.click} type="submit" color="primary" size="lg" block>Sign in</Button>
+                    <Button id="login_butt" onClick={this.click} type="submit" color="primary" size="lg" block>Sign in</Button>
                 </Form>
 
             </div>

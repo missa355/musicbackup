@@ -24,10 +24,38 @@ export class signup extends Component {
         
         axios.post("https://teaaurora.ngrok.io/signup/add", User) //this 
         .then(res => console.log(res.data)); 
+
+        //================
+        const singup_user = {
+            Email:document.getElementById("Email").value, 
+            Password:document.getElementById("password").value
+        }
+        //once logged in save the user token in local stroage
+        axios.post("https://teaaurora.ngrok.io/signin", singup_user) //this 
+        .then(res =>  {
+            // console.log('json',res.data);
+            if(res.data.success === true){
+                console.log("valid user. Token saved locally", res.data.success);
+                setInStorage('the_main_app', {token: res.data.token});
+                setInStorage('valid', {token: res.data.success});
+                setInStorage('name', res.data.name);
+                setInStorage('email', res.data.email);
+
+                // this.setState({loggedin:true})
+                window.location.reload();
+            }
+            else{   
+                console.log(res.data.success)
+
+            }
+        })
             
         // window.location = '/';
     }
     render() {
+        if(JSON.parse(localStorage.getItem('valid'))){
+            return(<div><Redirect to="/search" /></div>)
+        }
         // return <Redirect to='/target' />
         return (
             <div>
@@ -70,7 +98,7 @@ export class signup extends Component {
                         </Col>
                     </Row>
                     <br/>
-                    <Button onClick={this.click} className="input_block" type="submit"  size="lg" block>Sign up</Button>
+                    <Button id="login_butt" onClick={this.click} className="input_block" color="primary" type="submit"  size="lg" block>Sign up</Button>
 
                 </Form>
 

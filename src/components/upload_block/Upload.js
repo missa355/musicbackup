@@ -120,8 +120,8 @@ class Upload extends Component {
       // const track_info = {name:song_name.toLowerCase().split(" ").join("")}
       // axios.post("http://localhost:5000/track/add", track_info)    
       // .then(res => console.log(res))
-
-      const track_info = {name:song_name, TID:TID}
+      const CID = JSON.parse(localStorage.getItem('email'))
+      const track_info = {name:song_name, TID:TID, CID:CID}
       axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
       .then(res => console.log(res))
 

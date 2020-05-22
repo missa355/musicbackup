@@ -22,6 +22,8 @@ import Slider from '@material-ui/core/Slider';
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import playbutt from "../../Photos/music.png"
 import recordpause from "../../Photos/signs.png"
+import { Redirect } from 'react-router-dom'
+
 
 
 import "./uploadedmusic.css"
@@ -61,8 +63,10 @@ export class uploadedmusic extends Component {
         //     })
 
 
-
-            axios.get("https://teaaurora.ngrok.io/track")    
+            if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null)){
+                return;
+            }
+            axios.get(`https://teaaurora.ngrok.io/track/${JSON.parse(localStorage.getItem('email'))}`)    
             .then(res => {
                 for(var i=0;i<res.data.length;i++){
                     this.setState({song_names: [...this.state.song_names, res.data[i].Name]})
@@ -284,7 +288,9 @@ export class uploadedmusic extends Component {
       
     render() {
             // console.log("we are in business")
-        
+            if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null ||localStorage.length === 0)){
+                return(<Redirect to="/login" />)
+            }
             return (
                 <div id="search_div">
                     <Navbar></Navbar>

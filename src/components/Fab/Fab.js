@@ -26,15 +26,20 @@ import "./Fab.css"
         var val = document.getElementById("name").value;
         console.log(val)
 
+        const CID = JSON.parse(localStorage.getItem('email'));
         var playlst = {
             PID: uuidv4(),
-            CID:'missa355',
+            CID:CID,
             Title: val,
             creator: "Leon iden"
         }
         axios.post("https://teaaurora.ngrok.io/playlist/add", playlst)
         .then(res => console.log(res))
         setOpen(false);
+        
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
 
 
 

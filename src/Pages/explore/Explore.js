@@ -20,7 +20,7 @@ export class Explore extends Component {
         if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null)){
             return;
         }
-        axios.get('https://teaaurora.ngrok.io/playlist/')
+        axios.get(`https://teaaurora.ngrok.io/playlist/user/${JSON.parse(localStorage.getItem('email'))}`)
         .then(res => {
             console.log(res.data[0])
             for(var i=0;i<res.data.length;i++){
@@ -31,8 +31,8 @@ export class Explore extends Component {
 
     }
     render() {
-        if(JSON.parse(localStorage.getItem('valid') === false || localStorage.length === 0)){
-            return(<div><Redirect to="/login" /></div>)
+        if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null ||localStorage.length === 0)){
+            return(<Redirect to="/login" />)
         }
         return (
             <div id="explore-background">
@@ -44,12 +44,12 @@ export class Explore extends Component {
                     <h3>To start with</h3>
                     <Link to="/explore"><p>SEE ALL</p> </Link>
                 </div>
-                <Card title='DAMN.'/>
-                <Card title='DAMN.'/>
-                <Card title='DAMN.'/>
-                <Card title='DAMN.'/>
-                <Card title='DAMN.'/>
-                <Card title='DAMN.'/>
+                <Card id="top" title='Top tracks.' creator="Zenyatta"/>
+                <Card id="rise" title='On the rise.' creator="Zenyatta"/>
+                <Card id="fave" title='Our Favorite' creator="Zenyatta"/>
+                <Card id="lofi" title='Lofi' creator="Zenyatta"/>
+                <Card id="hip" title='hip hop caviar' creator="Zenyatta"/>
+                <Card id="classic" title='Classic music' creator="Zenyatta"/>
                 <div className="row_info"><h3>
                     Your Playlists</h3>
                     <Link to="/explore"><p>SEE ALL</p> </Link>

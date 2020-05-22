@@ -68,7 +68,7 @@ export class App extends Component {
             </React.Fragment>
           )}/>
 
-          <Route exact path="/test" render={ props =>(
+          <Route exact path="/garage" render={ props =>(
             <React.Fragment>
               <Testcomp {...props}/>
             </React.Fragment>

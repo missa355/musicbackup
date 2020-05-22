@@ -24,7 +24,8 @@ router.route('/').post((req, res) => {
       usersession.save((err, doc) => {
         if (err) {return res.send({sucess:false, message:"Invalid"})}
         // create an object thay relates a usersession and user by token(token points to a doc the holds and id that points to an associates user)
-        return res.send({success: true, message: "valid sign in", token:doc._id, name:users[0].Firstname + " " + users[0].Lastname})  
+        return res.send({success: true, message: "valid sign in", 
+                        token:doc._id, name:users[0].Firstname + " " + users[0].Lastname, email:users[0].Email})  
       })
     }
 

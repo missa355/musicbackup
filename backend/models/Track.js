@@ -12,6 +12,10 @@ const Track = new mongoose.Schema({
     Url:{
         type: String,
         default: ""
+    },
+    CID:{
+        type: String,
+        default: ""
     }
 });
 

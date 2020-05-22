@@ -8,6 +8,12 @@ router.route('/').get((req, res) => {
     .then(playlist => res.json(playlist))
     .catch(err => res.status(400).json('Error: ' + err));
 });
+
+router.route('/user/:id').get((req, res) => {
+    Playlist.find({CID: req.params.id})
+      .then(recipes => res.json(recipes))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
 // adds a newly created playlist to the DB
 router.route('/add').post((req, res) => { //if localhost:5000/add is called
   const PID = req.body.PID;
