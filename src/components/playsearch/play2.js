@@ -281,10 +281,10 @@ export class play2 extends Component {
     //=================================================================================================================
       
     render() {
-            // console.log("we are in business")
-            // if(JSON.parse(localStorage.getItem('valid') === false || localStorage.length === 0)){
-            //     return(<div><Redirect to="/login" /></div>)
-            // }
+   
+            if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null ||localStorage.length === 0)){
+                return(<Redirect to="/login" />)
+            }
         
             return (
                 <div id="search_div">
@@ -294,8 +294,8 @@ export class play2 extends Component {
 
                         <div id="infobox">
                             <img alt="damn" src={cover}/>
-                            <h2>DAMN.</h2>
-                            <p>Studio album by Kendrick Lamar</p>
+                            <h2>{this.props.title}</h2>
+                            <p>Studio playlist by you.</p>
                         </div>
                         {this.state.song_names.map((block, i) => 
                                 <Record className="tracks" key={i} onClick={() => this.play(i, false)} TID={this.state.song_tids[i]} name={block} stateIndex={record_ind}/>
@@ -309,8 +309,8 @@ export class play2 extends Component {
 
                             <img id ="small_cover" alt="album cover" src={cover}/>
                             <div id="creator_info">
-                                <h3 id="title2">DNA.</h3>
-                                <p id="artist">Kendrick Lamar</p>
+                                <h3 id="title2">(─‿‿─)</h3>
+                                <p id="artist">Unknown artist</p>
                             </div>
                             <div id="options">
                             

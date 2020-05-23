@@ -16,7 +16,8 @@ import './App.css';
 
 export class App extends Component {
   state = {
-    urls :[]
+    urls :[],
+    names: []
   }
 
 
@@ -27,6 +28,8 @@ export class App extends Component {
     .then(res => {
         for(var i=0;i<res.data.length;i++){
             this.setState({urls: [...this.state.urls, res.data[i].PID]})
+            this.setState({names: [...this.state.names, res.data[i].title]})
+
             // console.log(this.state.song_names)
         }
     })
@@ -80,7 +83,7 @@ export class App extends Component {
         {this.state.urls.map((block, i) => 
             <Route key={i} exact path={`/playlist/${block}`} render={ props =>(
               <React.Fragment>
-                <Playlist key={i} pid={block} {...props}/>
+                <Playlist title={this.state.names[i]} key={i} pid={block} {...props}/>
               </React.Fragment>          
             )}/>        
           )}

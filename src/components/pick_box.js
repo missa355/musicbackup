@@ -15,7 +15,7 @@ export class pick_box extends Component {
   }
 
   componentDidMount = () => {
-    axios.get("https://teaaurora.ngrok.io/playlist")    
+    axios.get(`https://teaaurora.ngrok.io/playlist/user/${JSON.parse(localStorage.getItem('email'))}`)    
     .then(res => {
         for(var i=0;i<res.data.length;i++){
             this.setState({urls: [...this.state.urls, res.data[i].title]})
@@ -31,6 +31,7 @@ export class pick_box extends Component {
     console.log(playlst)
     axios.post("https://teaaurora.ngrok.io/playlist/add_track_to_playlist", playlst)
     .then(res =>  console.log(res))    
+    document.getElementById(this.state.urls[i]).innerHTML = "Added ✓"
 
   }
 
@@ -44,7 +45,7 @@ export class pick_box extends Component {
                   {this.state.urls.map((block, i) => 
                     <div key={i} className="add_play">
                         <p>{block}</p>
-                        <button id="add_butt" onClick={() => {this.addtoplaylist(i)}}>
+                        <button id={block} onClick={() => {this.addtoplaylist(i)}}>
                           Add
                         </button>
                     </div>                 
