@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import axios from "axios"
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+
 
 
 
@@ -174,7 +176,7 @@ class Upload extends Component {
           >
             Clear
           </button> 
-          <Link to="/test">
+          <Link to="/garage">
             <button
               disabled={this.state.files.length < 0 || this.state.uploading}
               onClick={this.uploadFiles}
@@ -188,6 +190,9 @@ class Upload extends Component {
   }
 
   render() {
+    if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null ||localStorage.length === 0)){
+      return(<Redirect to="/login" />)
+  }
     return (
       <div className="Upload">
         <span className="Title"></span>

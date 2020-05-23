@@ -255,9 +255,11 @@ export class uploadedmusic extends Component {
         // this.setState({
         //       volume: val/100
         //     })
-        // console.log(val)
 
         audio.volume = val/100
+        curr_volume = val/100
+        // console.log(audio.volume)
+
     }
     SetProgress = () => {
         var prog = document.getElementById("myRange1")
@@ -315,7 +317,7 @@ export class uploadedmusic extends Component {
                             <img id ="small_cover" alt="album cover" src={cover}/>
                             <div id="creator_info">
                                 <h3 id="title2">DNA.</h3>
-                                <p id="artist">Kendrick Lamar</p>
+                                <p id="artist">Unknown artist</p>
                             </div>
                             <div id="options">
                             

@@ -21,6 +21,8 @@ export class App extends Component {
 
 
   componentDidMount = () => {
+    document.title = 'Sleepy-audio';
+
     axios.get("https://teaaurora.ngrok.io/playlist")    
     .then(res => {
         for(var i=0;i<res.data.length;i++){

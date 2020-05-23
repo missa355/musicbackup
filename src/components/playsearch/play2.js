@@ -248,9 +248,10 @@ export class play2 extends Component {
         // this.setState({
         //       volume: val/100
         //     })
+        curr_volume = val/100
+        audio.volume = val/100
         // console.log(val)
 
-        audio.volume = val/100
     }
     SetProgress = () => {
         var prog = document.getElementById("myRange1")
