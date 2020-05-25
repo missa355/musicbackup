@@ -88,11 +88,16 @@ export class App extends Component {
             )}/>        
           )}
 
-            {/* <Route exact path='/playlist/:pid' render={ props =>(
-              <React.Fragment>
-                <Playlist {...props}/>
-              </React.Fragment>          
-            )}/> */}
+
+        {/* global playlists */}
+        {/* <Playlist title="Top Tracks." pid={block} {...props}/>
+        <Playlist title="On The rise." pid={block} {...props}/>
+        <Playlist title="Our favorite." pid={block} {...props}/>
+        <Playlist title="Lofi" pid={block} {...props}/>
+        <Playlist title="Hip Hop caviar" pid={block} {...props}/>
+        <Playlist title="Classical music" pid="Classical-music" {...props}/> */}
+
+
         </div>
       </Router>
     );

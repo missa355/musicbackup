@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import track1 from "../../music/HUMBLE.mp3"
 import track2 from "../../music/DNA.mp3"
@@ -17,7 +16,7 @@ import next from "../../Photos/forward.png"
 import back from "../../Photos/backward.png"
 import axios from "axios"
 import Navbar from "../side_burger"
-import cover from "../../Photos/garage.jpg"
+import cover from "../../Photos/DAMN.png"
 import Slider from '@material-ui/core/Slider';
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import playbutt from "../../Photos/music.png"
@@ -26,7 +25,7 @@ import { Redirect } from 'react-router-dom'
 
 
 
-import "./uploadedmusic.css"
+import "./play2.css"
 
 
 
@@ -37,7 +36,7 @@ var curr_volume = 0.3
 var record_ind = 0
 
 // var volume = 0.1
-export class uploadedmusic extends Component {
+export class play2 extends Component {
     state = {
         song_lst : [],
         song_names : [],
@@ -52,29 +51,24 @@ export class uploadedmusic extends Component {
 
     //=================================================================================================================
     componentDidMount = () => {
-        // alert("This is gonna be your own music garage, from here you can add any of the songs you uploaded to playlists you created")
         // localStorage.setItem(this.props.match.params.pid, 0)
         // console.log(this.props.pid)
-        // axios.get(`https://teaaurora.ngrok.io/playlist/${this.props.pid}`)
-        // .then(res => {
-        //         console.log(res.data[0].Songs)
-        //         this.setState({song_names: res.data[0].Song_names})
-        //         this.setState({song_tids: res.data[0].Song_tids})
-        //     })
+        axios.get(`https://teaaurora.ngrok.io/playlist/${this.props.pid}`)
+        .then(res => {
+                console.log(res.data[0].Songs)
+                this.setState({song_names: res.data[0].Song_names})
+                this.setState({song_tids: res.data[0].Song_tids})
+            })
 
 
-            if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null)){
-                return;
-            }
-            axios.get(`https://teaaurora.ngrok.io/track/${JSON.parse(localStorage.getItem('email'))}`)    
-            .then(res => {
-                for(var i=0;i<res.data.length;i++){
-                    this.setState({song_names: [...this.state.song_names, res.data[i].Name]})
-                    this.setState({song_tids: [...this.state.song_tids, res.data[i].TID]})
 
-                    // console.log(this.state.song_names)
-                }
-            })  
+            // axios.get("https://teaaurora.ngrok.io/track")    
+            // .then(res => {
+            //     for(var i=0;i<res.data.length;i++){
+            //         this.setState({song_names: [...this.state.song_names, res.data[i].Name.toLowerCase().split(" ").join("")]})
+            //         // console.log(this.state.song_names)
+            //     }
+            // })  
 
  
             audio = document.getElementById("audio1")
@@ -215,7 +209,6 @@ export class uploadedmusic extends Component {
 
             
         }
-
     }
 
     forward = () => {
@@ -255,10 +248,9 @@ export class uploadedmusic extends Component {
         // this.setState({
         //       volume: val/100
         //     })
-
-        audio.volume = val/100
         curr_volume = val/100
-        // console.log(audio.volume)
+        audio.volume = val/100
+        // console.log(val)
 
     }
     SetProgress = () => {
@@ -289,10 +281,11 @@ export class uploadedmusic extends Component {
     //=================================================================================================================
       
     render() {
-            // console.log("we are in business")
+   
             if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null ||localStorage.length === 0)){
                 return(<Redirect to="/login" />)
             }
+        
             return (
                 <div id="search_div">
                     <Navbar></Navbar>
@@ -301,8 +294,8 @@ export class uploadedmusic extends Component {
 
                         <div id="infobox">
                             <img alt="damn" src={cover}/>
-                            <h2>Music Garage.</h2>
-                            <p>Personal album. You can add any of the songs uploaded to the playlists of your choice.</p>
+                            <h2>{this.props.title}</h2>
+                            <p>Studio playlist by you.</p>
                         </div>
                         {this.state.song_names.map((block, i) => 
                                 <Record className="tracks" key={i} onClick={() => this.play(i, false)} TID={this.state.song_tids[i]} name={block} stateIndex={record_ind}/>
@@ -348,4 +341,4 @@ export class uploadedmusic extends Component {
     }
 }
 
-export default uploadedmusic
+export default play2

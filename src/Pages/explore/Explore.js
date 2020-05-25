@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Card from "../../components/media_card/media_card"
 import Side from "../../components/side_burger"
 import "./Explore.css"
-import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
 import {Link} from "react-router-dom"
 import Fab from "../../components/Fab/Fab"
@@ -44,12 +43,12 @@ export class Explore extends Component {
                     <h3>To start with</h3>
                     <Link to="/explore"><p>SEE ALL</p> </Link>
                 </div>
-                <Card id="top" title='Top tracks.' creator="Zenyatta"/>
-                <Card id="rise" title='On the rise.' creator="Zenyatta"/>
-                <Card id="fave" title='Our Favorite' creator="Zenyatta"/>
-                <Card id="lofi" title='Lofi' creator="Zenyatta"/>
-                <Card id="hip" title='hip hop caviar' creator="Zenyatta"/>
-                <Card id="classic" title='Classic music' creator="Zenyatta"/>
+                <Card id="top" title='Top tracks.' creator="Zenyatta" clickable="none"/>
+                <Card id="rise" title='On the rise.' creator="Zenyatta" clickable="none"/>
+                <Card id="fave" title='Our Favorite' creator="Zenyatta" clickable="none"/>
+                <Card id="lofi" title='Lofi' creator="Zenyatta" clickable="none"/>
+                <Card id="hip" title='hip hop caviar' creator="Zenyatta" clickable="none"/>
+                <Card id="classic" title='Classic music' creator="Zenyatta" clickable="none"/>
                 <div className="row_info"><h3>
                     Your Playlists</h3>
                     <Link to="/explore"><p>SEE ALL</p> </Link>

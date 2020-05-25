@@ -7,7 +7,7 @@ export class media_card extends Component {
     render() {
         return (
             <div>
-                <Link to={`/playlist/${this.props.pid}`}>
+                <Link to={`/playlist/${this.props.pid}`} style={{ pointerEvents:this.props.clickable}}>
                     <div id="outer">
                         <div id="inner"></div>   
                         <h4>{this.props.title}</h4>     
