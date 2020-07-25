@@ -105,3 +105,20 @@ body{
     background: #4CAF50;
     cursor: pointer;
   }
+  /* #land_page_back{
+    background-color: khaki;
+    height: 100vh;
+  } */
+
+  #demo{
+    float: left;
+    margin-top: 5%;
+    margin-left: 49.7%;
+    position: absolute;
+    background-color: rgb(41, 43, 58);
+    font-size: 20px;
+    height: 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(224, 153, 153, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.4);
+
+  }

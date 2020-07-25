@@ -12,6 +12,9 @@ import speaker from "../Photos/speaker.png"
 import Nav from "../components/nav/nav"
 import Burger from "../components/side_burger"
 import "./play.css"
+import {getFromStorage, setInStorage} from "../utils/storage"
+import axios from "axios"
+
 
 var audio = document.getElementById("audio")
 var is_on = false
@@ -19,84 +22,111 @@ var index = 0
 
 // var volume = 0.1
 export class play extends Component {
-    state = {
-        song_lst : [track1, track2, track3 ,track4],
-        song_names : ["Dudley Theme song - Might night", "Wind waker - Zelda Orchestra",
-                      " Method Man - Wu-Tang Clan" , "Light breez - Moonglight"],
-        volume: 0.3
-    }
+    // state = {
+    //     song_lst : [track1, track2, track3 ,track4],
+    //     song_names : ["Dudley Theme song - Might night", "Wind waker - Zelda Orchestra",
+    //                   " Method Man - Wu-Tang Clan" , "Light breez - Moonglight"],
+    //     volume: 0.3
+    // }
 
-    componentDidMount = () => {
-        audio = document.getElementById("audio")
-        audio.src = track1
-        audio.onended = () => {
-            this.forward()
+    // componentDidMount = () => {
+    //     audio = document.getElementById("audio")
+    //     audio.src = track1
+    //     audio.onended = () => {
+    //         this.forward()
 
-        }
-        var slider = document.getElementById("myRange")
-        slider.value = this.state.volume * 100
+    //     }
+    //     var slider = document.getElementById("myRange")
+    //     slider.value = this.state.volume * 100
 
 
-    }
-    play = (song) =>{
-        // audio = document.getElementById("audio")
-        audio.volume = this.state.volume 
-        var vin = document.getElementById("vinyl1")
-        var title = document.getElementById("title")
-        title.innerText = this.state.song_names[index]
-        if(is_on){
-            audio.pause()
+    // }
+    // play = (song) =>{
+    //     // audio = document.getElementById("audio")
+    //     audio.volume = this.state.volume 
+    //     var vin = document.getElementById("vinyl1")
+    //     var title = document.getElementById("title")
+    //     title.innerText = this.state.song_names[index]
+    //     if(is_on){
+    //         audio.pause()
             
-            // this.setState({song_on: false})
-            is_on = false
-            vin.setAttribute("style", "animation-play-state: paused;")
-            document.body.style.backgroundImage = "url('../Photos/resume.png')";
-            document.getElementById("main").src=back;
+    //         // this.setState({song_on: false})
+    //         is_on = false
+    //         vin.setAttribute("style", "animation-play-state: paused;")
+    //         document.body.style.backgroundImage = "url('../Photos/resume.png')";
+    //         document.getElementById("main").src=back;
 
-        }
-        else{
-            // this.setState({song_on: true})
-            is_on = true;
-            audio.play()
-            vin.setAttribute("style", "animation-play-state: running;");
-            document.getElementById("main").src=back2;
+    //     }
+    //     else{
+    //         // this.setState({song_on: true})
+    //         is_on = true;
+    //         audio.play()
+    //         vin.setAttribute("style", "animation-play-state: running;");
+    //         document.getElementById("main").src=back2;
 
             
-        }
-    }
+    //     }
+    // }
 
-    forward = () => {
-        // this.setState({song_on: false})
-        is_on = false;
-        index = (index + 1) % this.state.song_lst.length
-        // this.setState({index: index % 3})
-        audio.src = this.state.song_lst[index]
-        this.play(this.state.song_lst[index])
-        // audio.play()
+    // forward = () => {
+    //     // this.setState({song_on: false})
+    //     is_on = false;
+    //     index = (index + 1) % this.state.song_lst.length
+    //     // this.setState({index: index % 3})
+    //     audio.src = this.state.song_lst[index]
+    //     this.play(this.state.song_lst[index])
+    //     // audio.play()
 
 
         
-    }
+    // }
 
-    backward = () => {
-        is_on = false;
-        index = index - 1
-        if(index < 0){
-            index = this.state.song_lst.length - 1
-        }
-        audio.src = this.state.song_lst[index]
-        this.play(this.state.song_lst[index])
+    // backward = () => {
+    //     is_on = false;
+    //     index = index - 1
+    //     if(index < 0){
+    //         index = this.state.song_lst.length - 1
+    //     }
+    //     audio.src = this.state.song_lst[index]
+    //     this.play(this.state.song_lst[index])
 
     
         
-    }
+    // }
 
-    SetVolume = () => {
-        var slider = document.getElementById("myRange")
-            this.setState({
-              volume: slider.value / 100
-            })
-        audio.volume = slider.value / 100
+    // SetVolume = () => {
+    //     var slider = document.getElementById("myRange")
+    //         this.setState({
+    //           volume: slider.value / 100
+    //         })
+    //     audio.volume = slider.value / 100
+    // }
+    demo = (e) => {
+        e.preventDefault();
+        const User = {
+            Email:"test@hotmail.com", 
+            Password:"12345678"
+        }
+        //once logged in save the user token in local stroage
+        axios.post("https://teaaurora.ngrok.io/signin", User) //this 
+        .then(res =>  {
+            // console.log('json',res.data);
+            if(res.data.success === true){
+                console.log("valid user. Token saved locally", res.data.success);
+                setInStorage('the_main_app', {token: res.data.token});
+                setInStorage('valid', {token: res.data.success});
+                setInStorage('name', res.data.name);
+                setInStorage('email', res.data.email);
+
+                // this.setState({loggedin:true})
+                setTimeout(()=>{window.location.reload();
+                }, 1000)
+            }
+            else{   
+                console.log(res.data.success)
+
+            }
+        })
     }
 
     render() {
@@ -110,6 +140,8 @@ export class play extends Component {
                     <Burger></Burger>
                 </div>
 
+                <button id="demo" onClick={this.demo}>Click For a Quick Demo</button>
+
                 <div onClick={() => this.play(this.state.song_lst[index])} className="play"/>
                 
                 <audio src="" id="audio" controls />
@@ -118,7 +150,6 @@ export class play extends Component {
                 <h3 id="title">Pick a song</h3>
 
                 <div className="contain_slider_land">
-                    {/* <img src={speaker} alt="speaker" id="speaker"/>  */}
                    <input className="slider" id="myRange" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
                 </div>
 

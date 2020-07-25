@@ -31,6 +31,7 @@
     "node-pre-gyp": "^0.14.0",
     "nouislider": "^14.4.0",
     "nouislider-react": "^3.3.7",
+    "particles-bg": "^2.5.0",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "rc-dialog": "^7.7.0",
