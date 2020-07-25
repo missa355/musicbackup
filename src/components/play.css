@@ -45,6 +45,7 @@ body{
     box-shadow: 0 4px 8px 0 rgba(224, 153, 153, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.09);
     text-align: center;
     overflow: hidden;
+    border: 1px black solid;
 
 
   }
@@ -111,9 +112,9 @@ body{
   } */
 
   #demo{
-    float: left;
+    /* float: left; */
     margin-top: 5%;
-    margin-left: 49.7%;
+    left: 44%;
     position: absolute;
     background-color: rgb(41, 43, 58);
     font-size: 20px;
@@ -121,4 +122,8 @@ body{
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(224, 153, 153, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.4);
 
+  }
+
+  #title:hover{
+    cursor: pointer;
   }

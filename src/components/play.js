@@ -140,14 +140,13 @@ export class play extends Component {
                     <Burger></Burger>
                 </div>
 
-                <button id="demo" onClick={this.demo}>Click For a Quick Demo</button>
 
                 <div onClick={() => this.play(this.state.song_lst[index])} className="play"/>
                 
                 <audio src="" id="audio" controls />
                 <Forward onClick={this.forward}/>
                 <Backward onClick={this.backward}/>
-                <h3 id="title">Pick a song</h3>
+                <h3 onClick={this.demo} id="title">Click for a Quick Demo</h3>
 
                 <div className="contain_slider_land">
                    <input className="slider" id="myRange" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
