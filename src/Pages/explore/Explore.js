@@ -19,7 +19,7 @@ export class Explore extends Component {
         if(JSON.parse(localStorage.getItem('valid') === false || localStorage.getItem('valid') === null)){
             return;
         }
-        axios.get(`https://teaaurora.ngrok.io/playlist/user/${JSON.parse(localStorage.getItem('email'))}`)
+        axios.get(`https://0c67bf6eec81.ngrok.io/playlist/user/${JSON.parse(localStorage.getItem('email'))}`)
         .then(res => {
             console.log(res.data[0])
             for(var i=0;i<res.data.length;i++){

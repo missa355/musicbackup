@@ -22,7 +22,7 @@ export class signup extends Component {
             isDeleted: false
             }
         
-        axios.post("https://teaaurora.ngrok.io/signup/add", User) //this 
+        axios.post("https://0c67bf6eec81.ngrok.io/signup/add", User) //this 
         .then(res => console.log(res.data)); 
 
         //================
@@ -31,7 +31,7 @@ export class signup extends Component {
             Password:document.getElementById("password").value
         }
         //once logged in save the user token in local stroage
-        axios.post("https://teaaurora.ngrok.io/signin", singup_user) //this 
+        axios.post("https://0c67bf6eec81.ngrok.io/signin", singup_user) //this 
         .then(res =>  {
             // console.log('json',res.data);
             if(res.data.success === true){

@@ -20,7 +20,7 @@ export class login extends Component {
             Password:document.getElementById("password").value
         }
         //once logged in save the user token in local stroage
-        axios.post("https://teaaurora.ngrok.io/signin", User) //this 
+        axios.post("https://0c67bf6eec81.ngrok.io/signin", User) //this 
         .then(res =>  {
             // console.log('json',res.data);
             if(res.data.success === true){

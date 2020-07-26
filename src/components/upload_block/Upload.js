@@ -114,7 +114,7 @@ class Upload extends Component {
 
 
       console.log(formData)
-      axios.post("https://teaaurora.ngrok.io/upload",formData, contenttype)    
+      axios.post("https://0c67bf6eec81.ngrok.io/upload",formData, contenttype)    
       .then(res => console.log(res))
       
       // uploads name of the file which consequnly uploads the directry to the mongodb collection
@@ -124,20 +124,20 @@ class Upload extends Component {
       // .then(res => console.log(res))
       const CID = JSON.parse(localStorage.getItem('email'))
       const track_info = {name:song_name, TID:TID, CID:CID}
-      axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
+      axios.post("https://0c67bf6eec81.ngrok.io/track/add", track_info)    
       .then(res => console.log(res))
 
       
     //   if(song_name.includes(".mp3") === true){
     //     const track_info = {name:song_name, TID:TID}
-    //     axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
+    //     axios.post("https://0c67bf6eec81.ngrok.io/track/add", track_info)    
     //     .then(res => console.log(res))
         
     // }
       // if(song_name.includes(".mp3") === false){
       //   const track_info = {name:song_name.concat(".mp3")}
       //   console.log(track_info.name)
-      //   axios.post("https://teaaurora.ngrok.io/track/add", track_info)    
+      //   axios.post("https://0c67bf6eec81.ngrok.io/track/add", track_info)    
       //   .then(res => console.log(res))
       // }
 

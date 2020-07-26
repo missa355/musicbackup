@@ -15,7 +15,7 @@ export class pick_box extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(`https://teaaurora.ngrok.io/playlist/user/${JSON.parse(localStorage.getItem('email'))}`)    
+    axios.get(`https://0c67bf6eec81.ngrok.io/playlist/user/${JSON.parse(localStorage.getItem('email'))}`)    
     .then(res => {
         for(var i=0;i<res.data.length;i++){
             this.setState({urls: [...this.state.urls, res.data[i].title]})
@@ -29,7 +29,7 @@ export class pick_box extends Component {
     // console.log("fake added to playlists")
     var playlst = {PID:this.state.pids[i], track:this.props.song, tid:this.props.tid}
     console.log(playlst)
-    axios.post("https://teaaurora.ngrok.io/playlist/add_track_to_playlist", playlst)
+    axios.post("https://0c67bf6eec81.ngrok.io/playlist/add_track_to_playlist", playlst)
     .then(res =>  console.log(res))    
     document.getElementById(this.state.urls[i]).innerHTML = "Added ✓"
 

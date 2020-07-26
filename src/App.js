@@ -24,7 +24,7 @@ export class App extends Component {
   componentDidMount = () => {
     document.title = 'Sleepy-audio';
 
-    axios.get("https://teaaurora.ngrok.io/playlist")    
+    axios.get("https://0c67bf6eec81.ngrok.io/playlist")    
     .then(res => {
         for(var i=0;i<res.data.length;i++){
             this.setState({urls: [...this.state.urls, res.data[i].PID]})
