@@ -14,7 +14,7 @@ import Burger from "../components/side_burger"
 import "./play.css"
 import {getFromStorage, setInStorage} from "../utils/storage"
 import axios from "axios"
-
+import Header from "../components/Header/Header"
 
 var audio = document.getElementById("audio")
 var is_on = false
@@ -22,85 +22,7 @@ var index = 0
 
 // var volume = 0.1
 export class play extends Component {
-    // state = {
-    //     song_lst : [track1, track2, track3 ,track4],
-    //     song_names : ["Dudley Theme song - Might night", "Wind waker - Zelda Orchestra",
-    //                   " Method Man - Wu-Tang Clan" , "Light breez - Moonglight"],
-    //     volume: 0.3
-    // }
-
-    // componentDidMount = () => {
-    //     audio = document.getElementById("audio")
-    //     audio.src = track1
-    //     audio.onended = () => {
-    //         this.forward()
-
-    //     }
-    //     var slider = document.getElementById("myRange")
-    //     slider.value = this.state.volume * 100
-
-
-    // }
-    // play = (song) =>{
-    //     // audio = document.getElementById("audio")
-    //     audio.volume = this.state.volume 
-    //     var vin = document.getElementById("vinyl1")
-    //     var title = document.getElementById("title")
-    //     title.innerText = this.state.song_names[index]
-    //     if(is_on){
-    //         audio.pause()
-            
-    //         // this.setState({song_on: false})
-    //         is_on = false
-    //         vin.setAttribute("style", "animation-play-state: paused;")
-    //         document.body.style.backgroundImage = "url('../Photos/resume.png')";
-    //         document.getElementById("main").src=back;
-
-    //     }
-    //     else{
-    //         // this.setState({song_on: true})
-    //         is_on = true;
-    //         audio.play()
-    //         vin.setAttribute("style", "animation-play-state: running;");
-    //         document.getElementById("main").src=back2;
-
-            
-    //     }
-    // }
-
-    // forward = () => {
-    //     // this.setState({song_on: false})
-    //     is_on = false;
-    //     index = (index + 1) % this.state.song_lst.length
-    //     // this.setState({index: index % 3})
-    //     audio.src = this.state.song_lst[index]
-    //     this.play(this.state.song_lst[index])
-    //     // audio.play()
-
-
-        
-    // }
-
-    // backward = () => {
-    //     is_on = false;
-    //     index = index - 1
-    //     if(index < 0){
-    //         index = this.state.song_lst.length - 1
-    //     }
-    //     audio.src = this.state.song_lst[index]
-    //     this.play(this.state.song_lst[index])
-
     
-        
-    // }
-
-    // SetVolume = () => {
-    //     var slider = document.getElementById("myRange")
-    //         this.setState({
-    //           volume: slider.value / 100
-    //         })
-    //     audio.volume = slider.value / 100
-    // }
     demo = (e) => {
         e.preventDefault();
         const User = {
@@ -131,27 +53,29 @@ export class play extends Component {
 
     render() {
         return (
-            <div id="land_page_back">
+            <div>
+                <Header/>
+                <div id="land_page_back">
+                    <h1 id="landing_title">Sound Frog</h1>
+                    <h2 id="landing_subtitle">Music side of things</h2>
+                    <button id="music_demo">Check it out!</button>
 
-                <img src={back} alt="back" id="main"/>
-                <img src={vinyl} alt="VinylS" id="vinyl1"/>
 
-                <div className="Search_butt">
-                    <Burger></Burger>
+
+
+
+                    {/* <div onClick={() => this.play(this.state.song_lst[index])} className="play"/>
+                    
+                    <audio src="" id="audio" controls />
+                    <Forward onClick={this.forward}/>
+                    <Backward onClick={this.backward}/> */}
+                    {/* <h3 onClick={this.demo} id="title">Click for a Quick Demo</h3> */}
+{/* 
+                    <div className="contain_slider_land">
+                    <input className="slider" id="myRange" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
+                    </div> */}
+
                 </div>
-
-
-                <div onClick={() => this.play(this.state.song_lst[index])} className="play"/>
-                
-                <audio src="" id="audio" controls />
-                <Forward onClick={this.forward}/>
-                <Backward onClick={this.backward}/>
-                <h3 onClick={this.demo} id="title">Click for a Quick Demo</h3>
-
-                <div className="contain_slider_land">
-                   <input className="slider" id="myRange" type="range" min="0" max="100" step="1" onChange={() => this.SetVolume()}></input>
-                </div>
-
             </div>
         )
     }

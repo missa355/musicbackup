@@ -22,6 +22,7 @@ import PublishIcon from '@material-ui/icons/Publish';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import "./side_burger.css"
 
 const Account_logos = [<LockOpenIcon/>,<CreateIcon/>]
 const General_logos = [<HomeIcon/>, <SearchIcon/>, <PlaylistPlayIcon/>, <LiveHelpIcon/>, <SettingsIcon/>, <ContactMailIcon/>]
@@ -155,7 +156,7 @@ export default function SwipeableTemporaryDrawer() {
   if(JSON.parse(localStorage.getItem('valid'))){
     return(    
     <div>
-      <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: 'white' }} fontSize="large"></MenuIcon> </Button>
+      <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: 'black' }} fontSize="large"></MenuIcon> </Button>
       <SwipeableDrawer
         anchor={'left'}
         open={state['left']}
@@ -170,7 +171,7 @@ export default function SwipeableTemporaryDrawer() {
 
   return (
     <div>
-          <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: 'white' }} fontSize="large"></MenuIcon> </Button>
+          <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: 'black' }} fontSize="large"></MenuIcon> </Button>
           <SwipeableDrawer
             anchor={'left'}
             open={state['left']}

@@ -24,7 +24,6 @@ import recordpause from "../../Photos/signs.png"
 import { Redirect } from 'react-router-dom'
 
 
-
 import "./play2.css"
 
 

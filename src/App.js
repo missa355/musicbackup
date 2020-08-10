@@ -10,6 +10,7 @@ import axios from "axios"
 import Playlist from "./components/playsearch/play2"
 import Testcomp from "./components/uploadedmusic/uploadedmusic"
 import BottomTest from "./components/bottom_test"
+import Header from "./components/Header/Header"
 
 import './App.css';
 
@@ -89,13 +90,11 @@ export class App extends Component {
           )}
 
 
-        {/* global playlists */}
-        {/* <Playlist title="Top Tracks." pid={block} {...props}/>
-        <Playlist title="On The rise." pid={block} {...props}/>
-        <Playlist title="Our favorite." pid={block} {...props}/>
-        <Playlist title="Lofi" pid={block} {...props}/>
-        <Playlist title="Hip Hop caviar" pid={block} {...props}/>
-        <Playlist title="Classical music" pid="Classical-music" {...props}/> */}
+          <Route exact path="/Testing" render={ props =>(
+            <React.Fragment>
+              <Header/>
+            </React.Fragment>
+          )}/>
 
 
         </div>
