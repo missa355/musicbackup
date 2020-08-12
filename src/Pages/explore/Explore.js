@@ -7,6 +7,7 @@ import {Link} from "react-router-dom"
 import Fab from "../../components/Fab/Fab"
 import axios from "axios"
 import { Redirect } from 'react-router-dom'
+import Header from "../../components/Header/Header"
 
 
 
@@ -37,7 +38,7 @@ export class Explore extends Component {
             <div id="explore-background">
             <Fab/>
 
-            <Side/>
+            <Header/>
             <div id="card_container">
                 <div className="row_info">
                     <h3>To start with</h3>

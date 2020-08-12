@@ -58,7 +58,7 @@ export class signup extends Component {
         }
         // return <Redirect to='/target' />
         return (
-            <div>
+            <div className="signup_back">
                 {/* <Nav></Nav> */}
                 <Burger></Burger>
                 <div className="signup">

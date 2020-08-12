@@ -1,12 +1,13 @@
 #explore-background{
-    overflow: scroll;
-    overflow-x: hidden;
+    /* overflow: scroll;
+    overflow-x: hidden; */
     width: 100%;
-    height: 100vh;
+    display: flex;
+    /* height: 100vh; */
     /* background-color: rgb(24, 23, 24); */
-    background: #000000;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #d2c6b2;
+
+
 
 }
 #card_container{
@@ -40,6 +41,8 @@ background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, F
 .row_info{
     width: 98.8%;
     height: 60px;
+    margin-top: 70px;
+
     /* background-color: thistle; */
     /* position: absolute; */
     padding-left: 10px;
@@ -47,13 +50,15 @@ background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, F
 
 }
 .row_info p{
-    color: white;
+    color: rgb(0, 0, 0);
     float: right;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     opacity: 0.8;
+
 }
 .row_info h3{
     float: left;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 35px;
+
 }

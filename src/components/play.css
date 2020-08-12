@@ -1,6 +1,4 @@
-body{
-  background-image: url("../Photos/landing.jpg");
-}
+
 .play:hover{
     cursor: pointer;
 }
@@ -8,6 +6,8 @@ body{
   margin-top: 5%;
   width: 100%;
   height: 100vh;
+  background-image: url("../Photos/landing.jpg");
+
   /* background-color: rgba(0, 0, 0, 0.178); */
   float: left;
 }
@@ -36,15 +36,31 @@ body{
   background-color: teal;
 }
 
-  #demo{
-    /* float: left; */
-    margin-top: 5%;
-    left: 44%;
-    position: absolute;
-    background-color: rgb(41, 43, 58);
-    font-size: 20px;
-    height: 50px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgba(224, 153, 153, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.4);
 
+
+#podcast_landing_title{
+  
+    color: rgb(0, 0, 0);
+    padding:50px 0 0 40px;
+    /* text-align: left; */
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    /* text-shadow: 2px 2px #7c7a7a; */
+  
   }
+#podcast_landing_subtitle{
+    color: rgb(0, 0, 0);
+    padding: 0px 0 0 40px;
+    /* text-align: left; */
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    opacity: 0.7;
+    /* text-shadow: 2px 2px #7c7a7a; */
+  
+  }
+#podcast_demo{
+    margin-top: 10px;
+    margin-left: 43px;
+    background-color: teal;
+  }
+  

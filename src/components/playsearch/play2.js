@@ -1,13 +1,4 @@
 import React, { Component } from 'react'
-import track1 from "../../music/HUMBLE.mp3"
-import track2 from "../../music/DNA.mp3"
-import track3 from "../../music/FEAR.mp3"
-import track4 from "../../music/ELEMENT.mp3"
-import RangeSlider from 'react-bootstrap-range-slider';
-import Forward from "../forward"
-import Backward from "../backward"
-import vinyl from "../../Photos/vinyl.png"
-import searchback from "../../Photos/searchback.png"
 import bigplay from "../../Photos/play.png"
 import bigresume from "../../Photos/bottom_resume.png"
 import pause from "../../Photos/pause.png"
@@ -22,8 +13,6 @@ import VolumeDown from '@material-ui/icons/VolumeDown';
 import playbutt from "../../Photos/music.png"
 import recordpause from "../../Photos/signs.png"
 import { Redirect } from 'react-router-dom'
-
-
 import "./play2.css"
 
 
@@ -212,16 +201,8 @@ export class play2 extends Component {
 
     forward = () => {
 
-        // this.setState({song_on: false})
-        // is_on = false;
-        // index = (index + 1) % this.state.song_names.length
-        // this.setState({index: index % 3})
-        // axios.get(`https://0c67bf6eec81.ngrok.io/download/${this.state.song_names[index]}`)    
-        // .then(res => console.log(res))
-
-        // audio.src = `https://0c67bf6eec81.ngrok.io/download/${this.state.song_names[index]}`       
+    
         this.play((index + 1) % this.state.song_names.length, false)
-        // audio.play()
 
 
         
