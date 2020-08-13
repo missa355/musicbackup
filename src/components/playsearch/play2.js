@@ -252,6 +252,7 @@ export class play2 extends Component {
             prog.value = 0;
         }
         else{
+            // console.log(audio.currentTime, audio.duration)
             prog.value = (audio.currentTime/audio.duration) * 100
         }
     }
