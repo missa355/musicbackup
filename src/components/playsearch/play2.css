@@ -19,14 +19,11 @@
   /* border: black 2px solid; */
   width: 80%;
   height: auto;
-  background-color: #ffffff;
+  background-color: #eae7d9;
   margin: auto;
   /* border-radius: 1%; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10vh;
-  
-  
-
   /* background-image: url("../../Photos/searchback.png"); */
 }
 #search_div{
@@ -35,8 +32,6 @@
   width: 100%;
   height: 100vh;
   background-color: #eae7d9;
-
-  
 }
 #infobox{
   float: left;
@@ -98,15 +93,29 @@
 .bottom_player{
   width:100%;
   background-color: #442727;
-
+  display: flex;
   border-top: 1px rgb(47, 47, 51);
-  position: absolute;
+  position: fixed;
   bottom: 0px;
+  justify-content: space-between;
+  height: 13%;
   /* border: 2px rgb(187, 29, 29) solid; */
 
 }
-
-
+#creator_info{
+  padding: 10px;
+  float: left;
+  height: 80px;
+  width: 150px;
+  /* background-color: khaki; */
+  /* border: 1px black solid; */
+}
+#small_cover{
+  float: left;
+  width: 80px;
+  height:80px;
+  /* margin: 10px; */
+}
 .record{
   background-color: blue;
 }
@@ -114,12 +123,10 @@
 #bigplay{
   /* margin-left: 20px; */
   float: left;
-  /* margin-top: 0.5%;  */
 
   /* margin-left: 3%; */
   pointer-events: all;
   /* border: black 1px solid; */
-  left: 80px;
   /* border: black 1px solid; */
 
 }
@@ -135,13 +142,11 @@
 
 #bignext{
   /* */
-  margin-left: 50px;
   float: left;
   /* margin-left: 20px;
   margin-top: 0.5%;  */
   pointer-events: all;
   min-width: 16px;
-  left: 110px;
   width: 16px;
 
   /* border: black 1px solid; */
@@ -151,7 +156,6 @@
 #bigback{
   float: left;
   min-width: 16px;
-  left: 0;
   /* margin-left: 20%;
   margin-top: 0.5%;  */
   pointer-events: all;
@@ -165,14 +169,24 @@
 #bigback:hover{
   cursor: pointer;
 }
+.grid_child{
+  height: 90%;
+  width: 400px;
+  /* border: 1px solid rgb(226, 191, 191); */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
 
+
+
+}
 #options{
-  height: 80px;
+  display: grid;
+  height: 100%;
   /* border: 1px solid black; */
   float: left;
-  margin-left: 100px;
-  width: 250px;
-  position: relative;
+  width: 750px;
+  place-items: start center;
   /* border: 1px black solid */
 
 }
@@ -184,11 +198,7 @@
 #progress{
   width: 70%;
 }
-#small_cover{
-  float: left;
-  width: 60px;
-  margin: 10px;
-}
+
 #title2{
   /* position: absolute; */
   /* background-color: black; */
@@ -199,14 +209,7 @@
   /* bottom: 35px;
   left: 75px; */
 }
-#creator_info{
-  padding: 10px;
-  float: left;
-  height: 80px;
-  width: 150px;
-  /* background-color: khaki; */
-  /* border: 1px black solid */
-}
+
 #artist{
   float: left;
   /* position: absolute; */
@@ -226,20 +229,25 @@
   color: white;
   position: absolute;
   padding-top: 20px;
+  
 
 
 }
 
 #volume_bar{
-  position: absolute;
+  /* position: absolute; */
   padding : 0;
-  width:10%;
+  width:40%;
   color:white; 
   /* position:fixed; */
   float: left;
-  left: 80%;
-  top: 16px;
-  margin-top: 16px;
+  /* left: 80%; */
+  /* top: 16px; */
+  /* border: 1px black solid; */
+  padding-top: 15%;
+  height: 60%;
+  margin-left: 30%;
+
 
 
 }
@@ -262,11 +270,13 @@
 
 }
 .contain_slider1{
-  position: relative;
   float: left;
-  width:60%;
-  min-height: 65px;
+  width:100%;
+  height: 70%;
+  padding-top: 10px;
+  /* min-height: 65px; */
   /* border: black 1px solid; */
+  margin: 0;
   
 }
 /* .contain_slider_land{
@@ -277,17 +287,19 @@
 
 
 .slider1 {
-  position: absolute;
+  /* position: absolute; */
   -webkit-appearance: none;
-  min-width: 60%;
+  min-width: 100%;
   border-radius: 5px;
   background: #ffffff;
   outline: none;
   -webkit-transition: .2s;
   transition: opacity .2s;
   float: left;
-  top: 16px;
-  margin-top: 16px;
+  height: 2px;
+
+  /* top: 16px; */
+  /* margin-top: 16px; */
   /* margin-right: 29%; */
 
 
@@ -297,9 +309,7 @@
   opacity: 1;
   cursor: pointer;
 }
-#myRange1{
-  height: 2px;
-}
+
 
 .slider1::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -331,3 +341,46 @@
 
 
 /* ============================= */
+
+.bottom_right{
+  float: left;
+  height: 100%;
+  width: 400px;
+  /* border: 1px rgb(248, 243, 243) solid; */
+
+}
+
+.bottom_left{
+  float: left;
+  height: 100%;
+  width: 400px;
+  border: 1px black solid;
+
+}
+
+#bottom_left_1{
+  float: left;
+  height: 100%;
+  width: 25%;
+  border: 1px black solid;
+  padding: 10px;
+
+}
+
+#bottom_left_2{
+  float: left;
+  height: 100%;
+  width: 75%;
+  border: 1px black solid;
+  padding: 10px;
+
+}
+
+.grid_child_buttons{
+  width: 34%;
+  height: 100%;
+  /* border: 1px black solid; */
+  float: left;
+  padding-left: 50px;
+
+}

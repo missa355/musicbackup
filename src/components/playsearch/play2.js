@@ -239,13 +239,13 @@ export class play2 extends Component {
     }
 
     updatetimer = () => {
-        var timer = document.getElementById("current_timer")
+        // var timer = document.getElementById("current_timer")
         var seconds = audio.currentTime
         var minutes = Math.floor(seconds / 60);
         minutes = (minutes >= 10) ? minutes : minutes;
         seconds = Math.floor(seconds % 60);
         seconds = (seconds >= 10) ? seconds : "0" + seconds;
-        timer.innerHTML =  minutes + ":" + seconds
+        // timer.innerHTML =  minutes + ":" + seconds
         var prog = document.getElementById("myRange1")
         // console.log(prog.value, audio.currentTime, audio.duration)
         if(Number.isNaN(audio.duration)){
@@ -286,31 +286,38 @@ export class play2 extends Component {
                     </div>
 
                     <div className="bottom_player">
+                            <div className="bottom_left">
+                                <div id="bottom_left_1">
+                                    <img id ="small_cover" alt="album cover" src={cover}/>
+                                </div>
 
-                            <img id ="small_cover" alt="album cover" src={cover}/>
-                            <div id="creator_info">
-                                <h3 id="title2">(─‿‿─)</h3>
-                                <p id="artist">Unknown artist</p>
+                                <div id="bottom_left_2">
+                                    <h3 id="title2">(─‿‿─)</h3>
+                                    <p id="artist">Unknown artist</p>
+                                </div>
+
                             </div>
+
                             <div id="options">
-                            
-                                <img onClick={() => this.backward()} id="bigback" src={back} alt="back" className="tools"/>
-                                <img onClick={() => this.play(index, true)} id="bigplay" src={bigplay} alt="back" className="tools"/>
-                                <img onClick={() => this.forward()} id="bignext" src={next} alt="back" className="tools"/>
+                                <div className="grid_child">
+                                    <div className="grid_child_buttons"><img onClick={() => this.backward()} id="bigback" src={back} alt="back" className="tools"/></div>
+                                    <div className="grid_child_buttons"><img onClick={() => this.play(index, true)} id="bigplay" src={bigplay} alt="back" className="tools"/></div>
+                                    <div className="grid_child_buttons"><img onClick={() => this.forward()} id="bignext" src={next} alt="back" className="tools"/></div>
+                                </div>
+                                <div className="contain_slider1">
+                                        <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
+                                    </div>
+                               
 
                             </div>
 
 
-                            <p id="current_timer" className="current_timer">0:00</p>
 
-                            <div className="contain_slider1">
-                                <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
-                                {/* <VolumeDown id='volume'/>  */}
+                            <div className="bottom_right">
+                                
                                 <Slider defaultValue={30} id="volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
-
                             </div>
-
-
+                        
                         </div>
 
                 </div>
