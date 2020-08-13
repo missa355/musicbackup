@@ -30,7 +30,7 @@ import "./uploadedmusic.css"
 
 
 
-var audio = document.getElementById("audio1")
+var audio = document.getElementById("garage_audio1")
 var is_on = false
 var index = 0
 var curr_volume = 0.3
@@ -77,7 +77,7 @@ export class uploadedmusic extends Component {
             })  
 
  
-            audio = document.getElementById("audio1")
+            audio = document.getElementById("garage_audio1")
             // audio.src = track1
             if(audio){
                 audio.onended = () => {
@@ -86,7 +86,7 @@ export class uploadedmusic extends Component {
                 }
             }
  
-            var slider = document.getElementById("volume_bar")
+            var slider = document.getElementById("garage_volume_bar")
             if(slider){
                 slider.defaultValue = this.state.volume * 100
 
@@ -101,7 +101,7 @@ export class uploadedmusic extends Component {
     }
     play = (i, main) =>{
 
-        var title = document.getElementById("title2")
+        var title = document.getElementById("garage_title2")
         title.innerHTML = this.state.song_names[i]
         // var prog = document.getElementById("time_bar")
         // prog.click();
@@ -131,7 +131,7 @@ export class uploadedmusic extends Component {
                 record_ind = 1
 
                 document.getElementById(this.state.song_names[i]).src = recordpause
-                document.getElementById("bigplay").src=pause;
+                document.getElementById("garage_bigplay").src=pause;
 
                 is_on = true;
                 index = i
@@ -147,7 +147,7 @@ export class uploadedmusic extends Component {
 
                 document.getElementById(this.state.song_names[i]).src = playbutt
                 // document.getElementById(this.state.song_names[i]).stateIndex = 0
-                document.getElementById("bigplay").src=bigplay;
+                document.getElementById("garage_bigplay").src=bigplay;
 
                 is_on = false
                 return ;
@@ -202,7 +202,7 @@ export class uploadedmusic extends Component {
             
             // this.setState({song_on: false})
             is_on = false
-            document.getElementById("bigplay").src=bigplay;
+            document.getElementById("garage_bigplay").src=bigplay;
 
         }
         else{
@@ -210,7 +210,7 @@ export class uploadedmusic extends Component {
             is_on = true;
             document.getElementById(this.state.song_names[index]).src = recordpause
 
-            document.getElementById("bigplay").src=pause;
+            document.getElementById("garage_bigplay").src=pause;
             audio.play()
 
             
@@ -262,19 +262,19 @@ export class uploadedmusic extends Component {
 
     }
     SetProgress = () => {
-        var prog = document.getElementById("myRange1")
+        var prog = document.getElementById("garage_myRange1")
         audio.currentTime= (prog.value/100)*audio.duration;
     }
 
     updatetimer = () => {
-        var timer = document.getElementById("current_timer")
+        // var timer = document.getElementById("current_timer")
         var seconds = audio.currentTime
         var minutes = Math.floor(seconds / 60);
         minutes = (minutes >= 10) ? minutes : minutes;
         seconds = Math.floor(seconds % 60);
         seconds = (seconds >= 10) ? seconds : "0" + seconds;
-        timer.innerHTML =  minutes + ":" + seconds
-        var prog = document.getElementById("myRange1")
+        // timer.innerHTML =  minutes + ":" + seconds
+        var prog = document.getElementById("garage_myRange1")
         // console.log(prog.value, audio.currentTime, audio.duration)
         if(Number.isNaN(audio.duration)){
             prog.value = 0;
@@ -308,36 +308,42 @@ export class uploadedmusic extends Component {
                                 <Record className="tracks" key={i} onClick={() => this.play(i, false)} TID={this.state.song_tids[i]} name={block} stateIndex={record_ind}/>
                         )}
 
-                        <audio src="https://0c67bf6eec81.ngrok.io/download/humble" id="audio1" controls onTimeUpdate={this.updatetimer} />
+                        <audio src="https://0c67bf6eec81.ngrok.io/download/humble" id="garage_audio1" controls onTimeUpdate={this.updatetimer} />
 
                     </div>
+                    <div className="garage_bottom_player">
+                            <div className="garage_bottom_left">
+                                <div id="garage_bottom_left_1">
+                                    <img id ="garage_small_cover" alt="garage_album cover" src={cover}/>
+                                </div>
 
-                    <div className="bottom_player">
-
-                            <img id ="small_cover" alt="album cover" src={cover}/>
-                            <div id="creator_info">
-                                <h3 id="title2">(─‿‿─)</h3>
-                                <p id="artist">Unknown artist</p>
-                            </div>
-                            <div id="options">
-                            
-                                <img onClick={() => this.backward()} id="bigback" src={back} alt="back" className="tools"/>
-                                <img onClick={() => this.play(index, true)} id="bigplay" src={bigplay} alt="back" className="tools"/>
-                                <img onClick={() => this.forward()} id="bignext" src={next} alt="back" className="tools"/>
+                                <div id="garage_bottom_left_2">
+                                    <h3 id="garage_title2">(─‿‿─)</h3>
+                                    <p id="garage_artist">Unknown artist</p>
+                                </div>
 
                             </div>
 
-
-                            <p id="current_timer" className="current_timer">0:00</p>
-
-                            <div className="contain_slider1">
-                                <input type="range" min="0" max="100" defaultValue="0" className="slider1" id="myRange1" onChange={() => this.SetProgress()}/>
-                                {/* <VolumeDown id='volume'/>  */}
-                                <Slider defaultValue={30} id="volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
+                            <div id="garage_options">
+                                <div className="garage_grid_child">
+                                    <div className="garage_grid_child_buttons"><img onClick={() => this.backward()} id="garage_bigback" src={back} alt="back" className="tools"/></div>
+                                    <div className="garage_grid_child_buttons"><img onClick={() => this.play(index, true)} id="garage_bigplay" src={bigplay} alt="back" className="tools"/></div>
+                                    <div className="garage_grid_child_buttons"><img onClick={() => this.forward()} id="garage_bignext" src={next} alt="back" className="tools"/></div>
+                                </div>
+                                <div className="garage_contain_slider1">
+                                        <input type="range" min="0" max="100" defaultValue="0" className="garage_slider1" id="garage_myRange1" onChange={() => this.SetProgress()}/>
+                                    </div>
+                               
 
                             </div>
 
 
+
+                            <div className="garage_bottom_right">
+                                
+                                <Slider defaultValue={30} id="garage_volume_bar" aria-labelledby="disabled-slider" onChange={ (e, val) => this.SetVolume(val) }  />
+                            </div>
+                        
                         </div>
 
                 </div>
