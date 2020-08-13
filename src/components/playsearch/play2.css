@@ -206,6 +206,7 @@
   opacity: 1;
   float: left;
   color: white;
+  width: 100%;
   /* bottom: 35px;
   left: 75px; */
 }
@@ -354,7 +355,8 @@
   float: left;
   height: 100%;
   width: 400px;
-  border: 1px black solid;
+  padding-top: 6px;
+  /* border: 1px black solid; */
 
 }
 
@@ -362,7 +364,7 @@
   float: left;
   height: 100%;
   width: 25%;
-  border: 1px black solid;
+  /* border: 1px black solid; */
   padding: 10px;
 
 }
@@ -371,7 +373,7 @@
   float: left;
   height: 100%;
   width: 75%;
-  border: 1px black solid;
+  /* border: 1px black solid; */
   padding: 10px;
 
 }
